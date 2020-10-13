@@ -59,8 +59,74 @@ import org.json.simple.JSONObject;*/
 
 public class Test {
 
+	private static void chapterParticipantsTest() {
+		try {
+			
+			BufferedReader reader = new BufferedReader(new FileReader("C:\\Tamil\\temp\\chapter_participants.json"));
+			String line=reader.readLine();
+			/*
+			 * while((line=reader.readLine())!=null) {
+			 * 
+			 * }
+			 */
+			System.out.println(line);
+			reader.close();
+			List<Integer> indexes = new ArrayList<>();
+			int index = 0;
+			while(index!=-1) {
+				index = line.indexOf("\"Judge\":", index);
+//				System.out.println(index);
+				if(index!=-1) {
+					indexes.add(index);
+					index ++;
+				}
+			}
+			
+			System.out.println(indexes.size());
+			StringBuilder js = new StringBuilder("{\"party\":[");
+			while(js.length()<20000) {
+				js.append("{\"judge\":[]}");
+				if(js.length()<20000) {
+					js.append(",");
+				}
+			}
+		
+			js.append("]}");
+			System.out.println(js.length());
+			System.out.println(js.toString());
+			
+			
+			int count = 1;
+			int max = 1;
+			StringBuilder json = new StringBuilder("{\"party\":[");
+			for(int i=5; i<indexes.size()-1; i++) {
+//				System.out.println(line.substring(indexes.get(i)-1, indexes.get(i+1)-2));
+				if(count!=1 && count<=max) {
+					json.append(",");
+				}
+				if(count<=max) {
+					json.append(line.substring(indexes.get(i)-1, indexes.get(i+1)-2));
+					count++;
+				}
+//				
+			}
+			json.append("]}");
+			System.out.println(json.toString());
+			System.out.println(json.length());
+//			System.out.println(line.indexOf("\"Judge\":"));
+//			int index = line.indexOf("\"Judge\":");
+//			String tempLine = line.substring(index+7,line.length());
+//			System.out.println(tempLine);
+//			System.out.println(line.substring(index,tempLine.indexOf("\"Judge\":")));
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private static void jenieTest() {
-		String https_url = "https://www.google.com";
+		String https_url = "https://websrv.stg.jenie.ao.dcn/JENIEApplicationAuthenticationService/services/ApplicationAuthentication?wsdl";
 		URL url;
 		try {
 
@@ -996,12 +1062,16 @@ public class Test {
         "https://rpicsd.s3.sa-east-1.amazonaws.com/92554f90-1fea-415e-92fb-5df869d3401b.jpg";
     System.out.println(url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf(".")));
   }
+  
+  public static void main(String[] args) {
+	chapterParticipantsTest();
+  }
 
   /**
    * @param args
    * @throws IOException
    */
-  public static void main(String[] args) throws IOException {
+  public static void main2(String[] args) throws IOException {
 	  jenieTest();
 //    stringSplit();
     //    sendRequest();
