@@ -1,5 +1,7 @@
 package com.success.springboot;
 
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisPassword;
@@ -8,8 +10,10 @@ import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import com.success.springboot.handlers.MyCustomCacheErrorHandler;
+
 @Configuration
-public class AppConfiguration {
+public class AppConfiguration extends CachingConfigurerSupport {
   @Bean
   public JedisConnectionFactory createJedisConnectionFactory() {
     RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
@@ -29,5 +33,10 @@ public class AppConfiguration {
     RedisTemplate<String, Object> template = new RedisTemplate<>();
     template.setConnectionFactory(createJedisConnectionFactory());
     return template;
+  }
+
+  @Override
+  public CacheErrorHandler errorHandler() {
+    return new MyCustomCacheErrorHandler();
   }
 }

@@ -6,3 +6,5 @@
 * Jedis – a Redis client implementation
 * spring-boot-starter-data-redis gives Lettuce dependency by default instead of Jedis. To use Jedis configuration, exclude Lettuce and add Jedis dependency
 * redis connection password can be set/changed using redis.conf file. That password should be used in the application to connect to redis. redis.conf can be used to enable more security features
+* CacheErrorHandler can be configured to handle the cache server (redis) outage. Using this, spring will allow the requests go thru the usual cycle without caching. When the cache server is back online, spring will automatically start using the cache
+* spring will try to use the CacheManager to get the cache entry, which will fail when the cache is down. The CacheErrorHandler will intercept this error, and one of the handleCache****Errors would be invoked. If you don't take any action in these methods, then the application will go ahead and serve the request without failing or throwing an exception
