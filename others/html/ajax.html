@@ -39,6 +39,29 @@
 					// $("#div1").html(result);
 				  }});
 				});
+				
+				
+				$("#sendpost").click(function(){
+					 
+					 /*$.post("https://xyz.com/stats",
+					  
+						{"stats":[{"guid":"272441602048299188"}]},
+					  function(data, status){
+						alert("Data: " + data + "\nStatus: " + status);
+					  });
+					*/
+					
+					$.ajax({
+					  url: 'https://xyz.com/stats',
+					  type: 'POST',
+					  data: JSON.stringify({"stats":[{guid: "272441602048299188"}]}),
+					  contentType: 'application/json; charset=utf-8',
+					  dataType   : "json",
+					  success: function(result){
+							console.log('success');
+						}
+					})
+				});
 			});
 		</script>
     </head>
@@ -49,6 +72,8 @@
             <p class="greeting-content">The content is </p>
 			<div id="div1"></div>
 			<button id="testbutton">Get External Content</button>
+			<br/>
+			<button id="sendpost">Send Post</button>
         </div>
     </body>
 </html>
