@@ -10,3 +10,9 @@
 * spring will try to use the CacheManager to get the cache entry, which will fail when the cache is down. The CacheErrorHandler will intercept this error, and one of the handleCache****Errors would be invoked. If you don't take any action in these methods, then the application will go ahead and serve the request without failing or throwing an exception
 * To load common properties from config-server, using git -> add application.properties file. using local directory -> add a file something like common.properties in config directory and use this name in the config-client's bootstrap.yml config server configuration, name: ${spring.application.name},common
 * Add actuator dependency to enable actuator and use @RefreshScope to refresh config changes. Make sure to enable refresh end-point using management.endpoints.web.exposure.include=*
+
+# Logging
+- Springboot supports several logging libraries with logback as default implementation
+- To use a different library, exclude logback from all springboot starters
+- Add a dependency for log4j2 (spring-boot-starter-log4j2) or whatever the logging library we want to use
+- Add a logging xml to override the log configuration. For e.g. log4jspring.xml

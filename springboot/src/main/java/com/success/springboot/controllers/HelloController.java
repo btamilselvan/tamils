@@ -8,8 +8,11 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RefreshScope
 @RestController
+@Slf4j
 public class HelloController {
   @Value("${hello}")
   private String hello;
@@ -25,5 +28,11 @@ public class HelloController {
   public String configTest() {
     System.out.println(new Date());
     return "Hello..." + new Date() + " " + hello;
+  }
+  
+  @GetMapping("/log")
+  public String logTest() {
+	  log.info("hello world ................");
+	  return "Hello "+ new Date();
   }
 }
