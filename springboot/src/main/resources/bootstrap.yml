@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: myboot-client
+  cloud:
+    config:
+      uri: http://localhost:9090
+      username: tamil1
+      password: somepassword
+      name: ${spring.application.name},common
