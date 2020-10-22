@@ -13,6 +13,6 @@
 
 # Logging
 - Springboot supports several logging libraries with logback as default implementation
-- To use a different library, exclude logback from all springboot starters
+- To use a different library, exclude logback from springboot starter
 - Add a dependency for log4j2 (spring-boot-starter-log4j2) or whatever the logging library we want to use
 - Add a logging xml to override the log configuration. For e.g. log4jspring.xml
