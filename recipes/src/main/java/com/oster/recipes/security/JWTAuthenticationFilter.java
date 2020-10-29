@@ -21,43 +21,45 @@ import com.oster.recipes.utils.JwtUtil;
 
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
-	@Autowired
-	private JwtUtil jwtUtil;
+  @Autowired private JwtUtil jwtUtil;
 
-	@Value("${jwt.header}")
-	private String tokenHeader;
+  @Value("${jwt.header}")
+  private String tokenHeader;
 
-	@Override
-	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-		AntPathMatcher pathMatcher = new AntPathMatcher();
-		return Constants.ALLOWED_URLS_LIST.stream()
-				.anyMatch(p -> pathMatcher.match(p, request.getServletPath()));
-	}
+  @Override
+  protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+    AntPathMatcher pathMatcher = new AntPathMatcher();
+    return Constants.ALLOWED_URLS_LIST
+        .stream()
+        .anyMatch(p -> pathMatcher.match(p, request.getServletPath()));
+  }
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
+  @Override
+  protected void doFilterInternal(
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws ServletException, IOException {
 
-		String token = jwtUtil.getToken(request);
+    String token = jwtUtil.getToken(request);
 
-		if (token != null && !jwtUtil.isTokenExpired(token)) {
-			// a valid jwt token found . use that token to authenticate the requests
-			// validate the token
-			String userName = jwtUtil.getUsernameFromToken(token);
-			if (StringUtils.hasText(userName)) {
-				setAuthentication(userName);
-				setTokenHeader(token, response);
-			}
-		}
-		filterChain.doFilter(request, response);
-	}
+    if (token != null && !jwtUtil.isTokenExpired(token)) {
+      // a valid jwt token found . use that token to authenticate the requests
+      // validate the token
+      String userName = jwtUtil.getUsernameFromToken(token);
+      if (StringUtils.hasText(userName)) {
+        setAuthentication(userName);
+        setTokenHeader(token, response);
+      }
+    }
+    filterChain.doFilter(request, response);
+  }
 
-	private void setAuthentication(String userName) {
-		SecurityContextHolder.getContext()
-		.setAuthentication(new UsernamePasswordAuthenticationToken(userName, null, new ArrayList<>()));
-	}
+  private void setAuthentication(String userName) {
+    SecurityContextHolder.getContext()
+        .setAuthentication(
+            new UsernamePasswordAuthenticationToken(userName, null, new ArrayList<>()));
+  }
 
-	private void setTokenHeader(String token, HttpServletResponse response) {
-		jwtUtil.setTokenHeader(token, response);
-	}
+  private void setTokenHeader(String token, HttpServletResponse response) {
+    jwtUtil.setTokenHeader(token, response);
+  }
 }

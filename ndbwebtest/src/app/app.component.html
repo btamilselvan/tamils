@@ -28,6 +28,8 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span>
 					Sign Up</a></li>
+			<li><a routerLink="/social-login"><span class="glyphicon glyphicon-log-in"></span>
+					Social Login</a></li>
 			<li *ngIf="!isLoggedIn()"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span>
 					Login</a></li>
 			<li *ngIf="isLoggedIn()"><a (click)="logout()" href="javascript:void(0);"><span class="glyphicon glyphicon-log-out"></span>

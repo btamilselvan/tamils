@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello CORS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+			$(document).ready(function() {
+				/* $.ajax({
+					url: "http://localhost:8080/greeting"
+				}).then(function(data, status, jqxhr) {
+				   $('.greeting-id').append(data.id);
+				   $('.greeting-content').append(data.content);
+				   console.log(jqxhr);
+				});
+				*/
+				/*$("#testbutton").click(function(){
+					$.ajax({url: "http://localhost:8080/health-check",
+					beforeSend: function(xhr){
+						xhr.setRequestHeader('X-api-key', 'test-value');
+						xhr.setRequestHeader('X-api-ky', 'test-value1');
+					},
+					success: function(result){
+					$("#div1").html(result);
+				  }});
+				});*/
+				$("#testbutton").click(function(){
+					 
+					/*$.ajax({url: "https://api.tamils.rocks/services/recipe/services/download-template", */
+					/*$.ajax({url: "http://localhost:8080/p/cache-check", */
+					/*$.ajax({url: "https://api.tamils.rocks/services/recipe/services/p/cache-check",*/
+					/*$.ajax({url: "https://d1oznh04eufgjs.cloudfront.net/services/recipe/p/cache-check", */
+					$.ajax({url: "https://api.tamils.rocks/services/recipe/services/p/download-template",
+					beforeSend: function(xhr){
+						xhr.setRequestHeader('z-api-key', 'test-value5');
+						xhr.setRequestHeader('z-api-ky', 'test-value10');
+						xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0QHRhbWlscy5yb2NrcyIsInJvbGUiOiJST0xFX1VTRVIsUk9MRV9BRE1JTixST0xFX0NSRUFURV9SRUNJUEUsUk9MRV9DUkVBVEVfQ09MTEVDVElPTiIsIm9mZnNldCI6MCwiY291bnRyaWVzIjoiTEFUQU0sQVIsUEUsQ0wsTVgsQ08iLCJleHAiOjE1OTkyNTk2NjYsImlhdCI6MTU5OTI1NjA2NiwiZW1haWwiOiJ0QHRhbWlscy5yb2NrcyIsImp0aSI6IjVkMmIxYWJhLTY5OWUtNGJjOC04MTA2LTQ0YjI1MGI5OWQ4NSJ9.tRNHPzeJtH0-E7g0jzmq16rHRrUkGk3XjaLTf7i79-X-SwAvAqsli8DK6yPNCFMIP-_F6BHaEdfc2zLK6BMOqA');
+					},
+					success: function(result){
+					// $("#div1").html(result);
+				  }});
+				});
+				
+				
+				$("#sendpost").click(function(){
+					 
+					 /*$.post("https://xyz.com/stats",
+					  
+						{"stats":[{"guid":"272441602048299188"}]},
+					  function(data, status){
+						alert("Data: " + data + "\nStatus: " + status);
+					  });
+					*/
+					
+					$.ajax({
+					  url: 'https://xyz.com/stats',
+					  type: 'POST',
+					  data: JSON.stringify({"stats":[{guid: "272441602048299188"}]}),
+					  contentType: 'application/json; charset=utf-8',
+					  dataType   : "json",
+					  success: function(result){
+							console.log('success');
+						}
+					})
+				});
+			});
+		</script>
+    </head>
+
+    <body>
+        <div>
+            <p class="greeting-id">The ID is </p>
+            <p class="greeting-content">The content is </p>
+			<div id="div1"></div>
+			<button id="testbutton">Get External Content</button>
+			<br/>
+			<button id="sendpost">Send Post</button>
+        </div>
+    </body>
+</html>

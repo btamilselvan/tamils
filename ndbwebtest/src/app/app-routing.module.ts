@@ -13,6 +13,7 @@ import {AddStateComponent} from './state/add-state.component';
 import {LoginComponent} from './user/login.component';
 import {Routes, RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
+import { CallbackComponent } from './auth/twitter/callback/callback.component';
 
 const appRoutes: Routes = [
   {
@@ -20,6 +21,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'social-login', component: SocialAuthComponent
+  },
+  {
+    path: 'twitter/callback', component: CallbackComponent
   },
   {
     path: '', component: HomeComponent

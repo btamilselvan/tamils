@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "aws-sdk": "^2.751.0",
+    "cwebp-bin": "^6.1.1",
+    "fs": "0.0.1-security",
+    "sharp": "^0.26.0",
+    "webp-converter": "^2.3.0"
+  },
+  "name": "webp",
+  "description": "A Node.js application to convert jpg to webp.",
+  "version": "1.0.1",
+  "main": "webp.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tamil"
+}

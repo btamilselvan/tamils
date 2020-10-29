@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" th:src="@{/scripts/welcome.js}"></script>
+</head>
+<body>
+
+	<div th:object="${user}">
+		<script th:inline="javascript">
+    		var nameJs = /*[[*{firstName}]]*/;
+		</script>
+		<span th:text="*{firstName}"></span>
+		<button type="button" th:onclick="welcome(nameJs);">Click
+			Me</button>
+	</div>
+
+</body>
+</html>

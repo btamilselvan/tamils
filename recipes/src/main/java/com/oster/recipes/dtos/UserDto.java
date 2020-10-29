@@ -11,11 +11,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserDto {
-	private String pk;
-	private String firstName;
-	private String lastName;
-	
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private String password;
-	private String userName;
+  private String pk;
+  private String firstName;
+  private String lastName;
+
+  @JsonProperty(access = Access.WRITE_ONLY)
+  private String password;
+
+  private String userName;
 }

@@ -11,8 +11,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @EnableDynamoDBRepositories(basePackages = "com.oster.recipes.repositories.dynamodb")
 public class RecipesApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RecipesApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(RecipesApplication.class, args);
+  }
 }

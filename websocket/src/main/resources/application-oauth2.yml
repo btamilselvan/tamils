@@ -1,0 +1,63 @@
+spring:
+   security:
+      oauth2:
+         client:
+            registration:
+               github:
+                  clientId: 1*****
+                  clientSecret: 2**********
+                  redirectUri: '{baseUrl}/oauth2/callback/{registrationId}'
+                  scope:
+                     - user:email
+                     - read:user
+               facebook:
+                  clientId: 3**********
+                  clientSecret: 4**********
+                  redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+                  scope:
+                     - email
+                     - public_profile
+               google:
+                  clientId: 5**********
+                  clientSecret: 6**********
+                  redirectUri: '{baseUrl}/oauth2/callback/{registrationId}'
+                  scope:
+                  - email
+                  - profile
+               okta:
+                  clientId: 7**********
+                  clientSecret: 7**********
+                  redirectUri: 'http://localhost:8080/oauth2/callback/{registrationId}'
+                  client-name: okta
+               linkedin:
+                  clientId: 8**********
+                  clientSecret: 9**********
+                  redirectUri: '{baseUrl}/oauth2/callback/{registrationId}'
+                  authorizationGrantType: authorization_code
+                  clientAuthenticationMethod: post
+                  scope:
+                  - r_emailaddress
+                  - r_liteprofile
+            provider:
+               linkedin:
+                  authorizationUri: https://www.linkedin.com/oauth/v2/authorization
+                  tokenUri: https://www.linkedin.com/oauth/v2/accessToken
+                  userInfoUri: https://api.linkedin.com/v2/me
+                  userNameAttribute: id
+               okta:
+                  issuer-uri: https://dev-746530.okta.com/oauth2/default
+                  token-uri: https://dev-746530.okta.com/oauth2/default/v1/token
+                  user-info-uri: https://dev-746530.okta.com/oauth2/default/v1/userinfo
+               facebook:
+                  authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+                  tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+                  userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+app:
+   auth:
+      tokenSecret: kJuhTGFRDsdqazD
+      tokenExpirationMsec: 64000000
+   oauth2:
+      authorizedRedirectUris:
+      - /home
+      - androidapp://oauth2/redirect
+      - iosapp://oauth2/redirect

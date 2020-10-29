@@ -7,7 +7,6 @@ import {CountryListComponent} from './country/country-list.component';
 import {CountryModule} from './country/country.module';
 import {CountryService} from './country/country.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import {AdminComponent} from './admin/admin.component';
 import {AdminService} from './admin/admin.service';
 import {AuthGuardService} from './auth/auth-guard.service';
@@ -28,10 +27,11 @@ import {PersonService} from './person/person.service';
 import {SharedModule} from './shared.module';
 import {StateService} from './state/state.service';
 import {CommonModule} from '@angular/common';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule} from 'angularx-social-login';
 import {SocialAuthComponent} from './auth/social-auth/social-auth.component';
 import { SocialAuthService } from './auth/social-auth/social-auth.service';
+import { CallbackComponent } from './auth/twitter/callback/callback.component';
 
 let config = new AuthServiceConfig([
   {
@@ -56,10 +56,11 @@ export function provideConfig() {
     PersonSearchComponent,
     PersonDetailComponent,
     HomeComponent,
-    SocialAuthComponent
+    SocialAuthComponent,
+    CallbackComponent
   ],
   imports: [
-    BrowserModule, ReactiveFormsModule, HttpModule, CountryModule, AppRoutingModule, FormsModule, SharedModule, SocialLoginModule
+    BrowserModule, ReactiveFormsModule, HttpClientModule, CountryModule, AppRoutingModule, FormsModule, SharedModule, SocialLoginModule
   ],
   providers: [
     {provide: AdminService, useClass: AdminService},

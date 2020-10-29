@@ -2,8 +2,7 @@ import {BaseService} from '../base.service';
 import {Country} from '../country/country';
 import {State} from './state';
 import {Injectable} from '@angular/core';
-import {Headers} from '@angular/http';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 

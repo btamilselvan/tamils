@@ -1,0 +1,63 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<style type="text/css">
+.Brand-and-model-name {
+	width: 260px;
+	height: 16px;
+	font-family: Arial;
+	font-size: 14px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 2.57;
+	letter-spacing: -0.33px;
+	text-align: left;
+	color: #43485e;
+}
+
+.Rectangle-747 {
+	width: 277px;
+	height: 49px;
+	border-radius: 4px;
+	border: solid 1px #43485e;
+}
+
+.PRODUCT-THREE-WITH-S {
+	width: 58px;
+	height: 11px;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #43485e;
+}
+</style>
+</head>
+<body>
+	<h3 style="text-align: center; color: green">
+		<span th:text="'Welcome to ' + ${to} + '!'"></span>
+	</h3>
+	<div th:utext="${title}" class="Brand-and-model-name"></div>
+	<br />
+	<div>
+		<table class="Rectangle-747">
+			<tr>
+				<td class="PRODUCT-THREE-WITH-S">
+					<div>Preparación</div>
+					<div>SOme</div>
+					
+				
+				</td>
+				<td class="PRODUCT-THREE-WITH-S">Cocido</td>
+				<td class="PRODUCT-THREE-WITH-S">Porciones</td>
+			</tr>
+
+		</table>
+
+	</div>
+</body>
+</html>

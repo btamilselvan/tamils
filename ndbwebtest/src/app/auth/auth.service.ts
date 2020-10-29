@@ -1,12 +1,13 @@
 import {BaseService} from '../base.service';
 import {HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
+import { JwtHelperService } from "@auth0/angular-jwt";
+
 @Injectable()
 export class AuthService extends BaseService {
   private failedRequests: Array<HttpRequest<any>> = [];
   loggedIn = false;
-  jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelper = new JwtHelperService();
 
   getToken(): string {
     console.log('inside auth service - ndbtoken->' + localStorage.getItem('ndbtoken'));
@@ -21,7 +22,7 @@ export class AuthService extends BaseService {
     localStorage.setItem('ndbtoken', 'Bearer ' + token);
   }
   isAuthenticated(): boolean {
-    return tokenNotExpired(null, localStorage.getItem('ndbtoken'));
+    return this.jwtHelper.isTokenExpired(localStorage.getItem('ndbtoken'));
   }
   collectFailedRequests(failedHttpRequest: HttpRequest<any>) {
     this.failedRequests = [];

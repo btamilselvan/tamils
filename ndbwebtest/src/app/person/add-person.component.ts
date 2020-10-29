@@ -16,7 +16,7 @@ export class AddPersonComponent {
   selectedCity: City = null;
   message: string;
   success = true;
-  @ViewChild(StateDropDownComponent)
+  @ViewChild(StateDropDownComponent, {static: true})
   stateDropDownComp: StateDropDownComponent;
   constructor(private personService: PersonService) {
 
