@@ -7,8 +7,15 @@
 		<artifactId>jigsaw</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>com.success.one</artifactId>
-	<packaging>jar</packaging>
+	<groupId>com.success</groupId>
+	<artifactId>com.success.three</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>com.success</groupId>
+			<artifactId>com.success.one</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
