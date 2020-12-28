@@ -45,7 +45,26 @@ This will compile both modules. for some reasons, javac complains "module not fo
 </p>
 
 ## commands
-<p>
-	-p is synonym for --module-path
-	jdeps - Java Dependency Analysis Tool, a command-line tool that processes .class files or the JARs that contain them, and analyzes the statically declared dependencies between classes
-</p>
+
+	-p is synonym for --module-path -> points to root directory where modules are found
+	-module-source-path -> points to modules root directory
+	-module -> points to the module and the main class to run
+	- jdeps - Java Dependency Analysis Tool, a command-line tool that processes .class files or the JARs that contain them, and analyzes the statically declared dependencies between classes
+		jdeps --module-path out -R --module com.success.four
+	- module name will be derived from module jar if "Automatic-Module-Name" is not present in manifest.mf. the dashes from the jar name will be replaced with dot. for e.g. com-success-four.jar will be resolved to com.success.four module
+	- java -p out --module com.success.four/com.success.four.SimpleFour
+	- java -p <modules root directory> --module <module-name>/<main class>
+	- create executable jar with main class -> 
+		jar -c --file jars/com-success-four.jar --main-class com.success.four.SimpleFour -C out/com.success.four .
+	- run ->
+		java -p jars --module com.success.four/com.success.four.SimpleFour
+	- -p jars is where all modules jars are present.
+	- create a standalone application using jlink (build a custom space-optimized JRE)
+		jlink -p "jars;<path to jmods in jdk directory>" --add-modules com.success.three,com.success.three --output app-four
+		jlink -p "jars;/c/Program Files/Java/jdk-11.0.5/jmods" --add-modules com.success.three,com.success.four --output app-four
+	- run standalone app
+		/bin/java --module com.success.four/com.success.four.SimpleFour
+	- jmod is a file format that can store .class files and any other resource files or native libraries and anything that cannot be included in jar files
+		jmod create --class-path jars/com-success-four.jar jmods/four.mod
+		jmod extract --dir jmodout jmods/four.mod
+	- multi jar is a new option to have a jar to include classes for multiple java versions
