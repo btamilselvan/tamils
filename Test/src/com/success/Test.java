@@ -38,8 +38,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLPeerUnverifiedException;
@@ -59,187 +63,193 @@ import org.json.simple.JSONObject;*/
 
 public class Test {
 
-	private static void chapterParticipantsTest() {
-		try {
-			
-			BufferedReader reader = new BufferedReader(new FileReader("C:\\Tamil\\temp\\chapter_participants.json"));
-			String line=reader.readLine();
-			/*
-			 * while((line=reader.readLine())!=null) {
-			 * 
-			 * }
-			 */
-			System.out.println(line);
-			reader.close();
-			List<Integer> indexes = new ArrayList<>();
-			int index = 0;
-			while(index!=-1) {
-				index = line.indexOf("\"Judge\":", index);
-//				System.out.println(index);
-				if(index!=-1) {
-					indexes.add(index);
-					index ++;
-				}
-			}
-			
-			System.out.println(indexes.size());
-			StringBuilder js = new StringBuilder("{\"party\":[");
-			while(js.length()<20000) {
-				js.append("{\"judge\":[]}");
-				if(js.length()<20000) {
-					js.append(",");
-				}
-			}
-		
-			js.append("]}");
-			System.out.println(js.length());
-			System.out.println(js.toString());
-			
-			
-			int count = 1;
-			int max = 1;
-			StringBuilder json = new StringBuilder("{\"party\":[");
-			for(int i=5; i<indexes.size()-1; i++) {
-//				System.out.println(line.substring(indexes.get(i)-1, indexes.get(i+1)-2));
-				if(count!=1 && count<=max) {
-					json.append(",");
-				}
-				if(count<=max) {
-					json.append(line.substring(indexes.get(i)-1, indexes.get(i+1)-2));
-					count++;
-				}
-//				
-			}
-			json.append("]}");
-			System.out.println(json.toString());
-			System.out.println(json.length());
-//			System.out.println(line.indexOf("\"Judge\":"));
-//			int index = line.indexOf("\"Judge\":");
-//			String tempLine = line.substring(index+7,line.length());
-//			System.out.println(tempLine);
-//			System.out.println(line.substring(index,tempLine.indexOf("\"Judge\":")));
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private static void jenieTest() {
-		String https_url = "https://websrv.stg.jenie.ao.dcn/JENIEApplicationAuthenticationService/services/ApplicationAuthentication?wsdl";
-		URL url;
-		try {
+  private static void treeSetDupTest() {
+    System.out.println(UUID.randomUUID().toString());
+    String[] arr = {"Hello", "hello", "HeLlo"};
+    System.out.println(Stream.of(arr)
+        .collect(Collectors.toCollection(() -> new TreeSet<String>(Comparator.comparing(s -> s, String.CASE_INSENSITIVE_ORDER)))));
+  }
 
-			url = new URL(https_url);
-			HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+  private static void genUUID() {
+    System.out.println(UUID.randomUUID().toString());
+  }
 
-			// dumpl all cert info
-			printHttpsCert(con);
+  private static void chapterParticipantsTest() {
+    try {
 
-			// dump all the content
-			printContent(con);
+      BufferedReader reader =
+          new BufferedReader(new FileReader("C:\\Tamil\\temp\\chapter_participants.json"));
+      String line = reader.readLine();
+      /*
+       * while((line=reader.readLine())!=null) {
+       *
+       * }
+       */
+      System.out.println(line);
+      reader.close();
+      List<Integer> indexes = new ArrayList<>();
+      int index = 0;
+      while (index != -1) {
+        index = line.indexOf("\"Judge\":", index);
+        //				System.out.println(index);
+        if (index != -1) {
+          indexes.add(index);
+          index++;
+        }
+      }
 
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+      System.out.println(indexes.size());
+      StringBuilder js = new StringBuilder("{\"party\":[");
+      while (js.length() < 20000) {
+        js.append("{\"judge\":[]}");
+        if (js.length() < 20000) {
+          js.append(",");
+        }
+      }
 
-	private static void printHttpsCert(HttpsURLConnection con) {
+      js.append("]}");
+      System.out.println(js.length());
+      System.out.println(js.toString());
 
-		if (con != null) {
+      int count = 1;
+      int max = 1;
+      StringBuilder json = new StringBuilder("{\"party\":[");
+      for (int i = 5; i < indexes.size() - 1; i++) {
+        //				System.out.println(line.substring(indexes.get(i)-1, indexes.get(i+1)-2));
+        if (count != 1 && count <= max) {
+          json.append(",");
+        }
+        if (count <= max) {
+          json.append(line.substring(indexes.get(i) - 1, indexes.get(i + 1) - 2));
+          count++;
+        }
+        //
+      }
+      json.append("]}");
+      System.out.println(json.toString());
+      System.out.println(json.length());
+      //			System.out.println(line.indexOf("\"Judge\":"));
+      //			int index = line.indexOf("\"Judge\":");
+      //			String tempLine = line.substring(index+7,line.length());
+      //			System.out.println(tempLine);
+      //			System.out.println(line.substring(index,tempLine.indexOf("\"Judge\":")));
 
-			try {
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
-				System.out.println("Response Code : " + con.getResponseCode());
-				System.out.println("Cipher Suite : " + con.getCipherSuite());
-				System.out.println("\n");
+  private static void jenieTest() {
+    String https_url =
+        "https://websrv.stg.jenie.ao.dcn/JENIEApplicationAuthenticationService/services/ApplicationAuthentication?wsdl";
+    URL url;
+    try {
 
-				Certificate[] certs = con.getServerCertificates();
-				for (Certificate cert : certs) {
-					System.out.println("Cert Type : " + cert.getType());
-					System.out.println("Cert Hash Code : " + cert.hashCode());
-					System.out.println("Cert Public Key Algorithm : " + cert.getPublicKey().getAlgorithm());
-					System.out.println("Cert Public Key Format : " + cert.getPublicKey().getFormat());
-//					cert.
-					System.out.println("\n");
-				}
+      url = new URL(https_url);
+      HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
 
-			} catch (SSLPeerUnverifiedException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+      // dumpl all cert info
+      printHttpsCert(con);
 
-		}
+      // dump all the content
+      printContent(con);
 
-	}
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
-	private static void printContent(HttpsURLConnection con) {
-		if (con != null) {
+  private static void printHttpsCert(HttpsURLConnection con) {
 
-			try {
+    if (con != null) {
 
-				System.out.println("****** Content of the URL ********");
-				BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+      try {
 
-				String input;
+        System.out.println("Response Code : " + con.getResponseCode());
+        System.out.println("Cipher Suite : " + con.getCipherSuite());
+        System.out.println("\n");
 
-				while ((input = br.readLine()) != null) {
-					System.out.println(input);
-				}
-				br.close();
+        Certificate[] certs = con.getServerCertificates();
+        for (Certificate cert : certs) {
+          System.out.println("Cert Type : " + cert.getType());
+          System.out.println("Cert Hash Code : " + cert.hashCode());
+          System.out.println("Cert Public Key Algorithm : " + cert.getPublicKey().getAlgorithm());
+          System.out.println("Cert Public Key Format : " + cert.getPublicKey().getFormat());
+          //					cert.
+          System.out.println("\n");
+        }
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+      } catch (SSLPeerUnverifiedException e) {
+        e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 
-		}
+  private static void printContent(HttpsURLConnection con) {
+    if (con != null) {
 
-	}
+      try {
 
-	private static void asciiCheck() {
-		String text = "IPR2018-01680 Fed. Cir. Notice of Appeal, ┲ A13-34379-921.pdf";
-		text.chars().allMatch(c -> c < 128);
+        System.out.println("****** Content of the URL ********");
+        BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
-		// strips off all non-ASCII characters
-		text = text.replaceAll("[^\\x00-\\x7F]", "");
+        String input;
 
-		// erases all the ASCII control characters
-		text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
+        while ((input = br.readLine()) != null) {
+          System.out.println(input);
+        }
+        br.close();
 
-		// removes non-printable characters from Unicode
-		text = text.replaceAll("\\p{C}", "");
-		System.out.println(text);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 
-	}
+  private static void asciiCheck() {
+    String text = "IPR2018-01680 Fed. Cir. Notice of Appeal, ┲ A13-34379-921.pdf";
+    text.chars().allMatch(c -> c < 128);
 
-	private static void cmecffile() {
-		try {
-			BufferedReader r = new BufferedReader(new FileReader("C:\\Tamil\\temp\\dopost2206"));
-			String line = null;
-			List<String> f = new ArrayList<>();
-			while ((line = r.readLine()) != null) {
-//				System.out.println(line);
-//				System.out.println(line.substring(line.indexOf("processing")+11));
-				if (line.indexOf("processing") != -1) {
-					f.add(line.substring(line.indexOf("processing") + 11));
-				}
-				if (line.indexOf("finished") != -1) {
-					f.remove(line.substring(line.indexOf("finished") + 9));
-				}
-			}
-			System.out.println(f);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+    // strips off all non-ASCII characters
+    text = text.replaceAll("[^\\x00-\\x7F]", "");
+
+    // erases all the ASCII control characters
+    text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
+
+    // removes non-printable characters from Unicode
+    text = text.replaceAll("\\p{C}", "");
+    System.out.println(text);
+  }
+
+  private static void cmecffile() {
+    try {
+      BufferedReader r = new BufferedReader(new FileReader("C:\\Tamil\\temp\\dopost2206"));
+      String line = null;
+      List<String> f = new ArrayList<>();
+      while ((line = r.readLine()) != null) {
+        //				System.out.println(line);
+        //				System.out.println(line.substring(line.indexOf("processing")+11));
+        if (line.indexOf("processing") != -1) {
+          f.add(line.substring(line.indexOf("processing") + 11));
+        }
+        if (line.indexOf("finished") != -1) {
+          f.remove(line.substring(line.indexOf("finished") + 9));
+        }
+      }
+      System.out.println(f);
+    } catch (FileNotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+
   private static void sendRequest() throws IOException {
     CloseableHttpClient httpClient = HttpClients.createDefault();
 
@@ -322,8 +332,7 @@ public class Test {
   private static void stringSplit() {
 
     System.out.println(FileSystems.getDefault().getPath("T:\\t2", "t1").getFileName());
-//    Paths.
-    
+    //    Paths.
 
     System.out.println(File.separator);
     System.out.println(File.pathSeparator);
@@ -1062,9 +1071,11 @@ public class Test {
         "https://rpicsd.s3.sa-east-1.amazonaws.com/92554f90-1fea-415e-92fb-5df869d3401b.jpg";
     System.out.println(url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf(".")));
   }
-  
+
   public static void main(String[] args) {
-	chapterParticipantsTest();
+    //	chapterParticipantsTest();
+    //	  genUUID();
+    treeSetDupTest();
   }
 
   /**
@@ -1072,8 +1083,8 @@ public class Test {
    * @throws IOException
    */
   public static void main2(String[] args) throws IOException {
-	  jenieTest();
-//    stringSplit();
+    jenieTest();
+    //    stringSplit();
     //    sendRequest();
     //    intTest();
     //    fileSizePrint();

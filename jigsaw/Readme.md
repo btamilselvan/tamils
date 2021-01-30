@@ -11,6 +11,10 @@ Automatic modules -> non-modularized jars found in the module path. can read pac
 </p>
 
 <p>
+A requires static clause expresses a dependency that is optional at run time.
+</p>
+
+<p>
 split package -> a package cannot be exported from two modules.
 </p>
 
@@ -37,6 +41,12 @@ JDK example: java.sql package -> transitively requires java.logging. so any modu
 
 <p>
 migration approaches: top-down, bottom-up
+</p>
+
+<p>
+Maven modules are a way to organize your project into several subprojects (modules). With Maven, you can control the versions of these modules and the dependencies between these modules. Each module will produce an artifact.
+
+Java modules are a way to strongly encapsulate your classes. It does not provide any means to control the version of an artifact you are using.
 </p>
 
 <p>
