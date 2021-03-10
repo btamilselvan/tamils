@@ -15,8 +15,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -38,11 +38,18 @@
 							<goal>hbm2java</goal>
 						</goals>
 						<configuration>
+							<propertyFile>${project.basedir}/src/main/hibernate/hibernate.properties</propertyFile>
+							<revengFile>${project.basedir}/src/main/hibernate/hibernate.reveng.xml</revengFile>
 							<ejb3>true</ejb3>
 							<jdk5>true</jdk5>
+							<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+							<templatePath>${project.basedir}/src/main/resources/templates</templatePath>
+							<packageName>com.appliedjobs.io.job.jpa.entities</packageName>
 						</configuration>
 					</execution>
 				</executions>
+	<!-- <configuration> <revengFile>${project.basedir}/src/main/hibernate/hibernate.reveng.xml</revengFile> 
+		</configuration> -->
 			</plugin>
 		</plugins>
 	</build>

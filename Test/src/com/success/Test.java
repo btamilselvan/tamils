@@ -18,8 +18,11 @@ import java.nio.file.FileSystems;
 import java.security.cert.Certificate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -63,11 +66,31 @@ import org.json.simple.JSONObject;*/
 
 public class Test {
 
+  public static void dateTest() {
+	  long epochSecond = 
+		        LocalDate.now()
+	            .toEpochSecond(LocalTime.of(10, 0, 0), ZoneOffset.of(ZoneId.SHORT_IDS.get("EST"))); 
+    System.out.println(epochSecond);
+    System.out.println(Instant.ofEpochSecond(epochSecond));
+    System.out.println(Instant.ofEpochSecond(epochSecond).atZone(ZoneId.of(ZoneId.SHORT_IDS.get("EST"))));
+    System.out.println(Instant.now(Clock.system(ZoneId.of(ZoneId.SHORT_IDS.get("EST")))));
+    System.out.println(Instant.now());
+    System.out.println(LocalDate.of(2014, 1, 20).toEpochDay());
+    System.out.println(LocalDate.of(2011, 6, 1).toEpochDay());
+    
+    
+  }
+
   private static void treeSetDupTest() {
     System.out.println(UUID.randomUUID().toString());
     String[] arr = {"Hello", "hello", "HeLlo"};
-    System.out.println(Stream.of(arr)
-        .collect(Collectors.toCollection(() -> new TreeSet<String>(Comparator.comparing(s -> s, String.CASE_INSENSITIVE_ORDER)))));
+    System.out.println(
+        Stream.of(arr)
+            .collect(
+                Collectors.toCollection(
+                    () ->
+                        new TreeSet<String>(
+                            Comparator.comparing(s -> s, String.CASE_INSENSITIVE_ORDER)))));
   }
 
   private static void genUUID() {
@@ -1075,7 +1098,8 @@ public class Test {
   public static void main(String[] args) {
     //	chapterParticipantsTest();
     //	  genUUID();
-    treeSetDupTest();
+//    treeSetDupTest();
+	  dateTest();
   }
 
   /**

@@ -48,9 +48,10 @@ export class SocialAuthService {
 
   getoauthTokenFromTwitter(){
 
-    const token = this.http.post('http://localhost:8080/get-twitter-oauth-token', {}, {
+    const token = this.http.post('http://localhost:8080/get-twitter-oauth-token?callBackUrl=http://localhost:4200/twitter/callback', {}, {
       headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YW1pbCIsImV4cCI6MTU4NTcxMjE5OCwidXNlcklkIjoiYzE1NTMwMWMtYTYxMi00YjljLTg4MzctZTk5YmIzODFhMzRmIiwiaWF0IjoxNTg1NzAzMTk4fQ.ROBBCroMNzFKsZHzbYUiweGYpqN2aHNuxhY5A_lTLdhFL4wGSUq35m3e0tuTYNmATQC6KNKDPtC2n1L9y3gQlQ"
+        "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0QHRhbWlscy5yb2NrcyIsInJvbGUiOiJST0xFX1VTRVIsUk9MRV9BRE1JTixST0xFX0NSRUFURV9SRUNJUEUsUk9MRV9DUkVBVEVfQ09MTEVDVElPTiIsImV4cCI6MTU5MDEwNzExMiwidXNlcklkIjoidEB0YW1pbHMucm9ja3MiLCJpYXQiOjE1OTAxMDM1MTIsImp0aSI6ImU5OGJlNTRhLTA3ZWUtNGNmZi1hMmQyLTExN2I2MmNlY2M1MCJ9.dfEPWQ5CTScshdY4SQySqX6THN45oFu2rcXpE2rsbNk1_NkRVCDmTFHLnScjS5vsv8mdQbkeU6r_gxqEiDgAJA",
+        "x-api-key": "zKyFW8HLthLq7"
       }
     }).map(data => data);
 

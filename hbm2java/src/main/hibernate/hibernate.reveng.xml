@@ -1,0 +1,12 @@
+<!DOCTYPE hibernate-reverse-engineering SYSTEM "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<type-mapping>
+		<sql-type jdbc-type="DATE"
+			hibernate-type="java.time.LocalDate" />
+		<sql-type jdbc-type="TIMESTAMP"
+			hibernate-type="java.time.Instant" />
+	</type-mapping>
+
+</hibernate-reverse-engineering>
