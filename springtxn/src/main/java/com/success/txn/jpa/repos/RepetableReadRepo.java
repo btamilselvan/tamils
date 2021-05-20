@@ -39,8 +39,8 @@ public class RepetableReadRepo {
 
   public String getCount() {
     // when this method and insertOne are executed in parallel in two different txn, this code
-    // executed but data stayed same (even after the insertOne is completed before after sleep lines
-    // are exected)
+    // executed but data stayed same (even after the insertOne is completed before "after sleep" lines
+    // are execcted)
     // meaning the data modified by insertOne did not reflect in this method (even after the
     // insertOne txn is completed before this)
     CriteriaBuilder qb = em.getCriteriaBuilder();
