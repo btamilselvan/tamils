@@ -46,6 +46,7 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -66,19 +67,34 @@ import org.json.simple.JSONObject;*/
 
 public class Test {
 
+  public static void intStreamTest() {
+    long recipeCount = 500;
+    long limit = 1;
+    if(recipeCount <= 50) {
+    	limit = 1;
+    }else if(recipeCount % 50 == 0) {
+    	limit = recipeCount / 50;
+    }else {
+    	limit = (recipeCount / 50) + 1;
+    }
+    
+    IntStream.iterate(1, i -> i + 50).limit(limit).forEach(System.out::println);
+  }
+
   public static void dateTest() {
-	  long epochSecond = 
-		        LocalDate.now()
-	            .toEpochSecond(LocalTime.of(10, 0, 0), ZoneOffset.of(ZoneId.SHORT_IDS.get("EST"))); 
+    //	  long epochSecond =
+    //		        LocalDate.now()
+    //	            .toEpochSecond(LocalTime.of(10, 0, 0),
+    // ZoneOffset.of(ZoneId.SHORT_IDS.get("EST")));
+    long epochSecond = 1000;
     System.out.println(epochSecond);
     System.out.println(Instant.ofEpochSecond(epochSecond));
-    System.out.println(Instant.ofEpochSecond(epochSecond).atZone(ZoneId.of(ZoneId.SHORT_IDS.get("EST"))));
+    System.out.println(
+        Instant.ofEpochSecond(epochSecond).atZone(ZoneId.of(ZoneId.SHORT_IDS.get("EST"))));
     System.out.println(Instant.now(Clock.system(ZoneId.of(ZoneId.SHORT_IDS.get("EST")))));
     System.out.println(Instant.now());
     System.out.println(LocalDate.of(2014, 1, 20).toEpochDay());
     System.out.println(LocalDate.of(2011, 6, 1).toEpochDay());
-    
-    
   }
 
   private static void treeSetDupTest() {
@@ -1098,8 +1114,9 @@ public class Test {
   public static void main(String[] args) {
     //	chapterParticipantsTest();
     //	  genUUID();
-//    treeSetDupTest();
-	  dateTest();
+    //    treeSetDupTest();
+    //    dateTest();
+    intStreamTest();
   }
 
   /**
