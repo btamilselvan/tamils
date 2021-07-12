@@ -66,6 +66,51 @@ import org.joda.time.format.DateTimeFormatter;
 import org.json.simple.JSONObject;*/
 
 public class Test {
+	
+	private static void jiraExtract() {
+		try {
+			BufferedReader reader = new BufferedReader(
+					new FileReader("C:\\Tamil\\downloads\\CMSO JIRA 2020-11-05T14_16_43-0500.csv"));
+			String line = null;
+			List<String> tickets = new ArrayList<>();
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				Stream.of(line.split(",")).forEach(System.out::println);
+				tickets.addAll(Stream.of(line.split(",")).filter(s -> s != null && s.length() > 0)
+						.filter(s -> !s.startsWith("T2-") && !s.startsWith("T3-")).filter(s -> s.contains("-"))
+						.map(s -> "\"".concat(s).concat("\"")).collect(Collectors.toList()));
+			}
+			System.out.println(tickets);
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void execpTest() {
+		String s1 = null;
+		String s2 = null;
+		String s3 = null;
+
+		//	String s = "Hello "+ s1.trim();
+
+		System.out.println("dsfsdf");
+
+		Set<Character> allDmTypes = new HashSet<Character>();
+		allDmTypes.add(null);
+		allDmTypes.stream().findFirst().orElse(null);
+
+		System.out.println("Done");
+
+	}
+
+	private static void dateFormatCheck() {
+		java.time.format.DateTimeFormatter df = java.time.format.DateTimeFormatter.ofPattern("MMddyyyy");
+		LocalDate local_date_1 = LocalDate.parse("11052020", df);
+		System.out.println(local_date_1);
+		//	local_date_1.
+		java.util.Date date = java.sql.Date.valueOf(local_date_1);
+	}
 
   public static void intStreamTest() {
     long recipeCount = 500;
