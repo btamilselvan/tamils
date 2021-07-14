@@ -70,7 +70,7 @@ public class TagContentExtractor {
       } else {
         // no end tag present. check the remaining text.. for e.g. <h1>hello<h1><h2>world</h2> ->
         // remaining part will be hello<h1><h2>world</h2>
-        // extract contents b/w start and end tag
+    	  //treat like this as a new line .. nested flag will be false for a new line
         line = line.substring(line.indexOf("<" + st + ">") + st.length() + 2);
         if (line != null && !line.contentEquals("")) {
           flag = extract(line, false) || flag;
