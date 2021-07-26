@@ -22,7 +22,6 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -140,6 +139,37 @@ public class Test {
     System.out.println(Instant.now());
     System.out.println(LocalDate.of(2014, 1, 20).toEpochDay());
     System.out.println(LocalDate.of(2011, 6, 1).toEpochDay());
+    
+    System.out.println(
+            Instant.now().atZone(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.DAYS));
+
+        System.out.println(Instant.now().truncatedTo(ChronoUnit.DAYS));
+
+        ZonedDateTime now =
+            Instant.now().atZone(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.DAYS);
+
+        System.out.println(
+            Instant.now().atZone(ZoneId.of("America/New_York")).getDayOfWeek().getValue());
+
+        System.out.println(
+            Instant.now()
+                .atZone(ZoneId.of("America/New_York"))
+                .plusDays(
+                    5 - Instant.now().atZone(ZoneId.of("America/New_York")).getDayOfWeek().getValue()));
+
+        System.out.println(
+            Instant.now()
+                .atZone(ZoneId.of("America/New_York"))
+                .plusDays(
+                    5 - Instant.now().atZone(ZoneId.of("America/New_York")).getDayOfWeek().getValue())
+                .truncatedTo(ChronoUnit.DAYS)
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        System.out.println(
+            Instant.now()
+                .atZone(ZoneId.of("America/New_York"))
+                .truncatedTo(ChronoUnit.DAYS)
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd")));
   }
 
   private static void treeSetDupTest() {
