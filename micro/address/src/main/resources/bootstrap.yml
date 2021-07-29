@@ -3,6 +3,11 @@ spring:
     name: address-service
   cloud:
     config:
-      uri: ${config-service.url}
-      username: tamil
-      password: somepassword
+      uri: http://localhost:8888
+      username: guest
+      password: can0n1947
+management:
+   endpoints:
+      web:
+         exposure:
+            include: refresh

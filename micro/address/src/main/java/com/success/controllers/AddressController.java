@@ -18,7 +18,7 @@ public class AddressController {
 	@GetMapping(path="/{personId}")
 	public String getAddress(@PathVariable("personId") String personId){
 		System.out.println("message from properties file "+message + " My instance ID is "+this.toString());
-		return "from Address controller. Given person ID is "+personId+". Current date is "+new Date()+" My instance ID is "+this.toString();
+		return "from Address controller. Given person ID is "+personId+". message from properties file "+message+" Current date is "+new Date()+" My instance ID is "+this.toString();
 	}
 	
 	@RequestMapping

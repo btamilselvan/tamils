@@ -7,3 +7,8 @@ eureka:
   instance:
    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
    preferIpAddress: true
+   lease-renewal-interval-in-seconds: 60
+message: hello world
+
+#The below property is encrypted using config /encrypt end-point. The config server will automatically decrypt this value when queried
+encryptedProperty: "{cipher}fde09fc4c856e2e40b2636e40050c925e5e0405e1f86e4a886df119e1329689016a17eb233a6ecb4d65c434818bba285"

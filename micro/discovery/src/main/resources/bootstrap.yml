@@ -4,5 +4,5 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-      username: tamil
-      password: somepassword
+      username: guest
+      password: can0n1947

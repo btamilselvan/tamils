@@ -3,13 +3,13 @@ spring:
   gateway:
    routes:
    - id: person-service
-     uri: ${person-service.url}
+     uri: lb://person-service
      predicates:
       - Path=/person/**
      filters:
       - RewritePath=/person/(?<path>.*), /$\{path}
    - id: address-service
-     uri: ${address-service.url}
+     uri: lb://ADDRESS-SERVICE
      predicates:
       - Path=/address/**
      filters:
@@ -19,4 +19,4 @@ server:
 eureka:
  client:
   serviceUrl:
-   defaultZone: http://eureka-server:8761/eureka/
+   defaultZone: http://localhost:8761/eureka/
