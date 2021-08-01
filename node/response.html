@@ -1,0 +1,2533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html lang="en" dir="ltr"
+	prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" href="https://developer.tdameritrade.com/sites/default/files/TD-bank-icon.png"
+		type="image/png" />
+	<meta name="description"
+		content="The token endpoint returns an access token along with an optional refresh token." />
+	<link rel="canonical" href="https://developer.tdameritrade.com/authentication/apis/post/token-0" />
+	<link rel="shortlink" href="https://developer.tdameritrade.com/node/69" />
+	<title>TD Ameritrade for developer | Post Access Token</title>
+	<style>
+		@import url("https://developer.tdameritrade.com/modules/system/system.base.css?qlkepp");
+	</style>
+	<style>
+		@import url("https://developer.tdameritrade.com/profiles/apigee/themes/apigee_responsive_tda/css/bootstrap.min.css?qlkepp");
+	</style>
+	<style>
+		@import url("https://developer.tdameritrade.com/sites/all/modules/custom/ldap-7.x-2.3/ldap/ldap_user/ldap_user.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/modules/field/theme/field.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/profiles/apigee/modules/contrib/logintoboggan/logintoboggan.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/modules/node/node.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/profiles/apigee/modules/contrib/views/css/views.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/profiles/apigee/modules/contrib/ckeditor/css/ckeditor.css?qlkepp");
+	</style>
+	<style>
+		@import url("https://developer.tdameritrade.com/profiles/apigee/modules/contrib/ctools/css/ctools.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/sites/all/modules/custom/ldap-7.x-2.3/ldap/ldap_servers/ldap_servers.admin.css?qlkepp");
+	</style>
+	<style>
+		@import url("https://developer.tdameritrade.com/profiles/apigee/themes/apigee_responsive_tda/css/style.css?qlkepp");
+	</style>
+	<style>
+		@import url("https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/css/main.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/css/codemirror.css?qlkepp");
+		@import url("https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/css/smartdocs.css?qlkepp");
+	</style>
+	<style>
+		.navbar-nav>li>span>span.caret {
+			border-bottom-color: #228B22;
+			border-top-color: #228B22;
+			color: #228B22;
+		}
+
+		.faq .collapsed {
+			display: block !important;
+		}
+
+		body header.navbar {
+			background-color: #D3D3D3;
+		}
+
+		body header.navbar {
+			border-color: #D3D3D3;
+		}
+
+		body .navbar-inverse .navbar-toggle,
+		body .navbar-inverse .navbar-collapse:focus,
+		body .navbar-inverse .navbar-toggle:hover,
+		body .navbar-inverse .navbar-toggle:focus,
+		body .navbar-inverse .navbar-nav>.open>a,
+		body .navbar-inverse .navbar-nav>.open>a:hover,
+		body .navbar-inverse .navbar-nav>.open>a:focus,
+		body .navbar-default .navbar-toggle:hover,
+		body .navbar-default .navbar-toggle:active,
+		body .navbar-default .navbar-toggle:focus,
+		body .navbar-default .navbar-collapse,
+		body .navbar-default .navbar-collapse:hover,
+		body .navbar-default .navbar-collapse:focus,
+		body .navbar-default .navbar-nav>.open>a,
+		body .navbar-default .navbar-nav>.open>a:hover,
+		body .navbar-default .navbar-nav>.open>a:focus,
+		body header.navbar.navbar-nav>.open>a,
+		body header.navbar.navbar-nav>.open>a:hover,
+		body header.navbar.navbar-nav>.open>a:focus {
+			border-color: #D3D3D3;
+			background-color: #D3D3D3;
+		}
+
+		body .navbar-inverse .navbar-nav>.open>a:hover {
+			color: #FFFFFF;
+		}
+
+		body header.navbar .nav>li>a {
+			color: #228B22;
+		}
+
+		body header.navbar .nav>li>a:hover {
+			background-color: #32CD32;
+		}
+
+		.navbar-inverse .navbar-collapse,
+		.navbar-inverse .navbar-form,
+		.navbar-inverse .navbar-toggle,
+		.navbar-default .navbar-collapse,
+		.navbar-default .navbar-form,
+		.navbar-default .navbar-toggle,
+		header.navbar.navbar-collapse,
+		header.navbar.navbar-form,
+		header.navbar.navbar-toggle {
+			border-color: #32CD32;
+		}
+
+		.navbar-inverse .navbar-toggle,
+		.navbar-inverse .navbar-toggle:hover,
+		.navbar-inverse .navbar-toggle:focus,
+		.navbar-inverse .navbar-nav>.open>a,
+		.navbar-inverse .navbar-nav>.open>a:hover,
+		.navbar-inverse .navbar-nav>.open>a:focus,
+		.navbar-default .navbar-toggle:hover,
+		.navbar-default .navbar-toggle:active,
+		.navbar-default .navbar-toggle:focus,
+		.navbar-default .navbar-nav>.open>a,
+		.navbar-default .navbar-nav>.open>a:hover,
+		.navbar-default .navbar-nav>.open>a:focus,
+		header.navbar.navbar-nav>.open>a,
+		header.navbar.navbar-nav>.open>a:hover,
+		header.navbar.navbar-nav>.open>a:focus {
+			background-color: #32CD32;
+		}
+
+		body header.navbar .nav .active>a,
+		body .navbar .nav .active>a:hover,
+		.navbar.navbar-fixed-top #main-menu li a:hover {
+			background-color: #32CD32;
+		}
+
+		body header.navbar .nav>li>a:hover {
+			color: #FFFFFF;
+		}
+
+		body a {
+			color: #137AAA;
+		}
+
+		body a:hover {
+			color: #0B4965;
+		}
+
+		body .footer {
+			background-color: #FFFFFF;
+		}
+
+		body .footer .navbar ul.footer-links>li>a {
+			color: #0B4965;
+		}
+
+		body .footer .navbar ul.footer-links>li>a:hover {
+			color: #0B4965;
+		}
+
+		body .btn {
+			background-color: #009FD0;
+		}
+
+		body .btn {
+			color: #FFFFFF;
+		}
+
+		body .btn:hover,
+		body .btn:focus,
+		body .btn:active,
+		body .open .dropdown-toggle.btn {
+			background-color: ;
+			color: ;
+		}
+
+		.navbar-nav>li>span {
+			color: #228B22;
+		}
+
+		.navbar-nav>li>span:hover {
+			color: #FFFFFF;
+		}
+
+		.navbar-nav>li.expanded span:hover,
+		.navbar-nav>li.expanded.active {
+			background-color: #32CD32;
+		}
+
+		.navbar-nav>li>span>span.caret {
+			border-bottom-color: #228B22;
+			border-top-color: #228B22;
+			color: #228B22;
+		}
+
+		.modal-body #user-register-form .form-type-password.col-md-4 {
+			width: 100%;
+		}
+
+		body #push {
+			height: 100px;
+		}
+
+		body #resource_URL input,
+		#method_content [data-role='method_url_container'],
+		#method_content .url_container>p>span,
+		[data-role='method_url_container'] span span span.template_param {
+			font-family: Courier, 'Courier New', monospace;
+		}
+	</style>
+	<!-- HTML5 element support for IE6-8 -->
+	<!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/contrib/jquery_update/replace/jquery/3.4/jquery.min.js?v=3.4.1">
+	</script>
+	<script>
+		jQuery.migrateMute=true;jQuery.migrateTrace=false;
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/contrib/jquery_update/replace/jquery-migrate/3/jquery-migrate.min.js?v=3">
+	</script>
+	<script src="https://developer.tdameritrade.com/misc/jquery-extend-3.4.0.js?v=3.4.1"></script>
+	<script src="https://developer.tdameritrade.com/misc/jquery-html-prefilter-3.5.0-backport.js?v=3.4.1"></script>
+	<script src="https://developer.tdameritrade.com/misc/jquery.once.js?v=1.2"></script>
+	<script src="https://developer.tdameritrade.com/misc/drupal.js?qlkepp"></script>
+	<script>
+		var Apigee=Apigee||{};Apigee.APIModel=Apigee.APIModel||{};
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/contrib/jquery_update/replace/jquery.cookie/jquery.cookie.min.js?v=1.4.1">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/themes/apigee_responsive_tda/js/bootstrap.min.js?qlkepp">
+	</script>
+	<script src="https://developer.tdameritrade.com/misc/form.js?v=7.75"></script>
+	<script src="https://developer.tdameritrade.com/sites/all/modules/custom/captcha-7.x-1.5/captcha/captcha.js?qlkepp">
+	</script>
+	<script src="https://developer.tdameritrade.com/profiles/apigee/modules/contrib/field_group/field_group.js?qlkepp">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/contrib/bootstrap_modal_forms/js/bootstrap_modal_forms.forms.js?qlkepp">
+	</script>
+	<script>
+		/**
+   * Evaluates the strength of a user's password.
+   *
+   * Returns the estimated strength and the relevant output message.
+   */
+  Drupal.evaluatePasswordStrength = function (value) {
+    var strength = 'high';
+    var msg = [];
+    var translate = Drupal.settings.password;
+    // Merge Password Policy translations.
+    for (var setting in Drupal.settings.passwordPolicy) {
+      translate[setting] = Drupal.settings.passwordPolicy[setting];
+    }
+    var trimmedSpaces = /^\s+|\s+$/.test(value);
+    if (/^\s+$/.test(value)) {
+      return {
+        strength: 10,
+        indicatorText: translate.lowStrength,
+        message: translate.allSpaces
+      };
+    }
+    value = value.replace(/^\s+|\s+$/g, '');
+    var i = 0;
+    var num = 0;
+    var chr = '';
+    while (i < value.length) {
+      chr = value.charAt(i);
+      if (chr.toUpperCase() != chr.toLowerCase()) {
+        if (chr == chr.toLowerCase()) {
+          num++;
+        }
+      }
+      i++;
+    }
+    if (num < 1) {
+      strength = 'low';
+      msg.push(translate.constraint_lowercase);
+    }
+    var i = 0;
+    var num = 0;
+    var chr = '';
+    while (i < value.length) {
+      chr = value.charAt(i);
+      if (chr.toUpperCase() != chr.toLowerCase()) {
+        if (chr == chr.toUpperCase()) {
+          num++;
+        }
+      }
+      i++;
+    }
+    if (num < 1) {
+      strength = 'low';
+      msg.push(translate.constraint_uppercase);
+    }
+    var i = 0;
+    var num = 0;
+    var chr = '';
+    while (i < value.length) {
+      chr = value.charAt(i);
+      if ('1234567890'.indexOf(chr) != -1) {
+        num++;
+      }
+      i++;
+    }
+    if (num < 1) {
+      strength = 'low';
+      msg.push(translate.constraint_digit);
+    }
+    if (!value.length || value.length < 8) {
+      strength = 'low';
+      msg.push(translate.constraint_length);
+    }
+    var username = '';
+    var usernameInput = jQuery('input.username');
+    if (usernameInput.length) {
+      username = usernameInput.val();
+    }
+    else {
+      username = Drupal.settings.passwordPolicy.username;
+    }
+    if (username) {
+      var username_lowercase = username.toLowerCase();
+      var password_lowercase = value.toLowerCase();
+      if (password_lowercase.indexOf(username_lowercase) != -1) {
+        strength = 'low';
+        msg.push(translate.constraint_username);
+      }
+    }
+    if (msg.length > 0) {
+      msg = translate.needsMoreVariation + '<ul><li>' + msg.join('</li><li>') + '</li></ul>';
+    }
+    else {
+      msg = '';
+    }
+    if (trimmedSpaces) {
+      msg = msg.concat(translate.trimmedSpaces);
+    }
+    var level = '';
+    if (strength === 'high') {
+      level = 100;
+    }
+    else {
+      level = 10;
+    }
+    if (strength === 'high') {
+      strength = translate.highStrength;
+    }
+    if (strength === 'medium') {
+      strength = translate.mediumStrength;
+    }
+    if (strength === 'low') {
+      strength = translate.lowStrength;
+    }
+    return {
+      strength: level,
+      indicatorText: strength,
+      message: msg
+    };
+  }
+	</script>
+	<script src="https://developer.tdameritrade.com/profiles/apigee/themes/apigee_responsive_tda/js/global.js?qlkepp">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/js/codemirror.js?qlkepp">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/js/codemirror_javascript.js?qlkepp">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/js/codemirror_xml.js?qlkepp">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/js/base64_min.js?qlkepp">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/js/v6/model.js?qlkepp">
+	</script>
+	<script
+		src="https://developer.tdameritrade.com/profiles/apigee/modules/custom/devconnect/smartdocs/local/js/v6/controller.js?qlkepp">
+	</script>
+	<script>
+		jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"apigee_responsive_tda","theme_token":"GRXZebPaUk_Ni9-15KeMHXHaOStmA3VDo814f324m3c","js":{"profiles\/apigee\/modules\/contrib\/jquery_update\/replace\/jquery\/3.4\/jquery.min.js":1,"0":1,"profiles\/apigee\/modules\/contrib\/jquery_update\/replace\/jquery-migrate\/3\/jquery-migrate.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"profiles\/apigee\/modules\/contrib\/jquery_update\/replace\/jquery.cookie\/jquery.cookie.min.js":1,"misc\/form.js":1,"sites\/all\/modules\/custom\/captcha-7.x-1.5\/captcha\/captcha.js":1,"profiles\/apigee\/modules\/contrib\/field_group\/field_group.js":1,"1":1,"profiles\/apigee\/themes\/apigee_responsive_tda\/js\/global.js":1,"profiles\/apigee\/themes\/bootstrap\/js\/bootstrap.js":1,"2":1,"3":1,"profiles\/apigee\/themes\/apigee_responsive_tda\/js\/bootstrap.min.js":1,"profiles\/apigee\/modules\/contrib\/bootstrap_modal_forms\/js\/bootstrap_modal_forms.forms.js":1,"4":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/js\/codemirror.js":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/js\/codemirror_javascript.js":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/js\/codemirror_xml.js":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/js\/base64_min.js":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/js\/v6\/model.js":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/js\/v6\/controller.js":1},"css":{"modules\/system\/system.base.css":1,"profiles\/apigee\/themes\/bootstrap\/css\/overrides.css":1,"profiles\/apigee\/themes\/apigee_responsive_tda\/css\/bootstrap.min.css":1,"sites\/all\/modules\/custom\/ldap-7.x-2.3\/ldap\/ldap_user\/ldap_user.css":1,"modules\/field\/theme\/field.css":1,"profiles\/apigee\/modules\/contrib\/logintoboggan\/logintoboggan.css":1,"modules\/node\/node.css":1,"profiles\/apigee\/modules\/contrib\/views\/css\/views.css":1,"profiles\/apigee\/modules\/contrib\/ckeditor\/css\/ckeditor.css":1,"profiles\/apigee\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/custom\/ldap-7.x-2.3\/ldap\/ldap_servers\/ldap_servers.admin.css":1,"profiles\/apigee\/themes\/apigee_responsive_tda\/css\/style.css":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/css\/main.css":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/local\/css\/codemirror.css":1,"profiles\/apigee\/modules\/custom\/devconnect\/smartdocs\/css\/smartdocs.css":1,"0":1}},"urlIsAjaxTrusted":{"\/authentication\/apis\/post\/token-0?grant_type=authorization_code\u0026access_type=offline\u0026client_id=Q18GOYDF9GGA14RWY2NLZWHHJTDHDO0I%40AMER.OAUTHAP\u0026redirect_uri=http:\/\/localhost:5000\u0026code=Yt9cZ71Zc3vv5ky\/PkEBlAvM2atZ2oREGK2Vl8IUAggtKMmS0w2nUxazAY06A5FziTMb4f7y438hiI6vhooiY9WBvYtzfhqUosyHo\/TUEQpUxXLBB2xKT\/7C5s3I8N4vxi4\/G7nBUtLoG6oN8UN\/MzvxmmL2C7GuG77uJi\/wi57oAUVuAW29Uy9VjDdGpKR2lGXK8lkwkN3kN6eKtdIWGm1X6\/xzJ6PiviiKpIPOc9MMIMc1OoAzkVmD\/F6rJ8g0CixxmzDyT5Bf5QIAPl+0Qi9HsEcBXWISsc3gPnhN3weRusog\/Hdq3CZHc5SkYBwzgS9v+eWpf8QCtCo\/WK3y5MQR7GpYnRvO\/wA4cAe38tUcgUjeW33wNfRoshuSSgXjnYGaKAAA2QxaV2o94t1mBaq5ywmjYkRUS8hfSRXlJD6P9asU0Tert62cJIE100MQuG4LYrgoVi\/JHHvlqVVQ6AgNOMeCp\/wxD3fiuvlMFJ83XmePcTnoY5IiNUOIjE\/DvNspCHdxI+MZH6rHiYfJ86hmDz\/aVXMn1QFAo0nfL0umuv3S1jc0aTC1bgQr6fFB6JMJ7Kk3jvKoRmL3oPCy2Mv7uV21826ue+wegdzsuq1GVHc0kRXB44w26HS\/IFxBcykGmObcsq7jJEv\/\/cPKwc\/1atczM18r\/d64F9pVfg1bMRwEYx6trPjIQZquA\/0khYEk51J0\/GEHZcLISVMrVrPVyzur+t4XUvbGKW9yGPrA72BcfS\/lg1b0\/UPYUxGk3RV0jPodX8iH2TVNZBV3I7ZzEhVuXDlHgzOXHKC1grR+1smmnuAaYQs6XlmzLegk8\/2EA5JPfV6UTGsOkGW8Z81LOWA\/QVR\/BXUtDu\/8k03IkI139QTce07XdU9yDCePDVzh+9a1gKY=212FD3x19z9sWBHDJACbC00B75E":true,"\/search\/node":true},"passwordPolicy":{"username":"","trimmedSpaces":"The password has spaces at the beginning or end which are ignored.","allSpaces":"The password is all spaces and will not be saved.","needsMoreVariation":"The password does not include enough variation to be secure.","constraint_lowercase":"Password must contain at least one lowercase character.","constraint_uppercase":"Password must contain at least one uppercase character.","constraint_digit":"Password must contain at least one digit.","constraint_length":"Password must be at least 8 characters in length.","constraint_username":"Password must not contain the username."},"password":{"strengthTitle":"Password quality:","lowStrength":"Bad","mediumStrength":"Good","highStrength":"Good"},"field_group":{"div":"form"},"smartdocs":{"oauth2AuthUrl":"\/smartdocs\/oauth\/callback","apiModelBaseUrl":"\/smartdocs_oauth_additions","authUrl":"http:\/\/prdtxlvapgmgt01.clientsys.local:8080\/v1\/users\/{user}\/authenticate","proxyUrl":"https:\/\/smartdocs.tdameritrade.com\/smartdocs\/v1\/sendrequest"},"bootstrap_modal_forms":{"login":{"identifier":"login","url":"user\/login","open_onload":false},"register":{"identifier":"register","url":"user\/register","open_onload":false}},"bootstrap_modal_forms_current_path":"node\/69","bootstrap":{"anchorsFix":"0","anchorsSmoothScrolling":"0","formHasError":1,"popoverEnabled":1,"popoverOptions":{"animation":1,"html":0,"placement":"right","selector":"","trigger":"click","triggerAutoclose":1,"title":"","content":"","delay":0,"container":"body"},"tooltipEnabled":1,"tooltipOptions":{"animation":1,"html":0,"placement":"top","selector":"","trigger":"hover focus","delay":0,"container":"body"}}});
+	</script>
+</head>
+
+<body
+	class="html not-front not-logged-in no-sidebars page-node page-node- page-node-69 node-type-smart-method logo_standard">
+	<div id="skip-link">
+		<a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+	</div>
+	<header id="navbar" role="banner" class="navbar navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="logo navbar-btn pull-left" href="/" title="Home">
+					<img src="https://developer.tdameritrade.com/sites/default/files/logo.png" alt="" />
+        </a>
+
+					<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+			</div>
+
+			<div class="navbar-collapse collapse">
+				<nav role="navigation">
+					<ul class="menu nav navbar-nav full-menu primary-nav hidden-xs">
+						<li class="first leaf"><a href="/apis" title="View API Documenation">APIs</a></li>
+						<li class="last leaf"><a href="/guides">Guides</a></li>
+					</ul>
+					<ul class="menu nav navbar-nav mobile-menu primary-nav visible-xs">
+						<li class="first leaf"><a href="/apis" title="View API Documenation">APIs</a></li>
+						<li class="last leaf"><a href="/guides">Guides</a></li>
+					</ul>
+					<ul class="menu nav navbar-nav pull-right account-menu">
+						<li class=""><a href="/user/register">Register</a></li>
+						<li class=""><a href="/user/login">Login</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!-- Breadcrumbs -->
+	<div class="container search-container">
+		<div class="row">
+			<div class="col-xs-6 pull-right">
+				<form action="/search/node" method="post" id="search-form" accept-charset="UTF-8">
+					<div>
+						<div class="form-wrapper form-group" id="edit-basic">
+							<div class="input-group">
+								<input placeholder="Search" class="search-query span2 form-control form-text" type="search" placeholder="Keyword" autocapitalize="off" autocorrect="off" id="edit-keys" name="keys" value="" size="20" maxlength="255" /><span class="input-group-btn"><button type="hidden" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button></span>
+							</div>
+							<button class="element-invisible btn btn-primary form-submit" style="display:none" type="hidden" id="edit-submit--3" name="op" value="Search">Search</button>
+						</div><input type="hidden" name="form_build_id" value="form-XhJOiO05_bBOU9r3NAV7qek8tL2qIC4gzMn73JGA3aM" />
+						<input type="hidden" name="form_id" value="search_form" />
+</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumbs -->
+	<div class="container" id="breadcrumb-navbar">
+		<div class="row">
+			<br/>
+			<div class="col-md-12">
+				<ol class="breadcrumb">
+					<li><a href="/authentication/apis">Authentication Documentation</a></li>
+					<li class="active">Post Access Token</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<div class="master-container">
+		<section class="page-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Title Prefix -->
+						<!-- Title -->
+						<h1>Post Access Token</h1>
+						<!-- SubTitle -->
+						<!-- Title Suffix -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="page-content">
+			<div class="main-container container">
+
+				<header role="banner" id="page-header">
+				</header> <!-- /#page-header -->
+
+				<div class="row">
+
+
+					<section class="col-sm-12">
+
+						<div class="region region-content">
+							<section id="block-system-main" class="block block-system clearfix">
+
+
+								<div id="node-69" class="node node-smart-method clearfix"
+									about="/authentication/apis/post/token-0" typeof="sioc:Item foaf:Document">
+
+
+									<span property="dc:title" content="Post Access Token" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+									<div class="content">
+										<!-- Apigee Dev Portal Method Template v6.3   MODIFIED 04/12/2017 -->
+
+										<div class="row smartdocs-wrapper">
+											<style>
+												body section.page-header {
+													display: none
+												}
+
+												.CodeMirror {
+													min-height: 150px;
+													max-height: 300px
+												}
+
+												.CodeMirror-scroll {
+													padding: 0;
+													max-height: 300px
+												}
+
+												/* Responsiveness */
+												@media(max-width:767px) {}
+
+												@media(min-width:768px) {}
+
+												@media(min-width:992px) {}
+
+												@media(min-width:1200px) {}
+
+												@media(min-width:1400px) {}
+
+												.node-type-smart-method .page-content {
+													padding: 5px 0 10px;
+												}
+
+												.node-type-smart-method div#breadcrumb-navbar {
+													margin-top: 10px;
+												}
+
+												.node-type-smart-method #method_content h3 {
+													padding-top: 5px;
+												}
+
+												.node-type-smart-method #method_content .resource_description {
+													padding-top: 20px;
+													padding-bottom: 20px;
+												}
+
+												.panel-heading {
+													cursor: pointer;
+												}
+
+
+												.node-type-smart-method #method_content button#send_request {
+													border-radius: 0;
+													font-family: 'inconsolatamedium', sans-serif !important;
+													font-size: 16px !important;
+													letter-spacing: 1px;
+													text-transform: uppercase;
+													background: #2180b5 !important;
+													padding: 20px !important;
+													width: 212px !important;
+													color: #FFF !important;
+													line-height: 14px !important;
+													border: 1px solid #003f62;
+													margin-right: 5px;
+												}
+
+												.node-type-smart-method #method_content a.link_reset_default {
+													border-radius: 0;
+													font-family: 'inconsolatamedium', sans-serif !important;
+													font-size: 16px !important;
+													letter-spacing: 1px;
+													text-transform: uppercase;
+													background: #ffffff !important;
+													padding: 20px !important;
+													width: 212px !important;
+													margin: 0 !important;
+													color: #000 !important;
+													line-height: 14px !important;
+													border: 1px solid #003f62;
+													text-align: center;
+
+												}
+
+												.node-type-smart-method .panel.panel-default {
+													margin-top: 5px;
+												}
+											</style>
+											<!-- Main content -->
+											<div class="col-sm-7" id="method_content">
+												<div class="col-sm-12">
+													<!-- Error container -->
+													<div data-role="error_container"></div>
+
+													<!-- Inline edit Organization admin credential section -->
+													<div class="admin_auth_section hide">
+														<a class="set_admin_credentials hide" href="javascript:void(0)"
+															title="set admin credentials.">Set Admin Credentials...</a>
+														<a class="auth_admin_email" title="reset admin credentials."
+															href="javascript:void(0)"></a>
+														<i title="Clear admin credentials." class="icon-remove"></i>
+													</div>
+													<div>
+														<!-- Resource summary - name, description and resource URL section -->
+														<div class="resource_details">
+															<span id="method_name" data-role="method-name" class="hide">Post Access Token</span>
+															<div class="title_container">
+																<div class="verb_container">
+																	<p class="verb POST" data-role="verb">POST</p>
+																</div>
+																<h2 data-role="method-title" data-allow-edit="true">Post
+																	Access Token</h2>
+															</div>
+															<div class="description_and_url_container">
+																<div class="description_container">
+																	<div class="resource_description markdown"
+																		data-allow-edit="true"
+																		data-role="method-description">
+																		<p>The token endpoint returns an access token
+																			along with an optional refresh token.</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<!--/.resource_details -->
+													</div>
+													<div class="row">
+														<div class="col-sm-12">
+															<div class="panel-group" id="accordion">
+																<div class="panel panel-default">
+																	<div class="panel-heading">
+																		<h4 class="panel-title"
+																			style="display: inline;">Resource URL</h4>
+																		<i id="headerParametersCollapse-arrow" class="glyphicon glyphicon-chevron-right" style="float:right;"></i>
+																	</div>
+																	<div id="resourceURLTable"
+																		class="panel-collapse collapse in">
+																		<div class="panel-body">
+																			<div>
+																				<!-- Resource summary - name, description and resource URL section -->
+																				<div class="url_container">
+																					<p data-role="method_url_container">
+
+																						<span data-role="host">https://api.tdameritrade.com/v1/oauth2</span>
+																						<span data-role="path">/token</span>
+																					</p>
+																				</div>
+																				<!--/.resource_details -->
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
+
+																<div class="body-parameters-wrapper">
+
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h4 class="panel-title"
+																				style="display: inline;">Body Parameters
+																			</h4>
+																			<i id="headerParametersCollapse-arrow" class="glyphicon glyphicon-chevron-right" style="float:right;"></i>
+																		</div>
+																		<div id="bodyTable"
+																			class="panel-collapse collapse in">
+																			<div class="panel-body">
+																				<!-- body parameters -->
+
+																				<form enctype="multipart/form-data"
+																					method="post" name="formParams"
+																					id="formParams">
+																					<div class="table">
+																						<table
+																							class="table table-striped">
+																							<thead>
+																								<tr>
+																									<th
+																										class="col-sm-2">
+																										Name</th>
+																									<th
+																										class="col-sm-3">
+																										Values</th>
+																									<th
+																										class="col-sm-7">
+																										Description</th>
+																								</tr>
+																							</thead>
+																							<tbody>
+
+
+																								<tr data-role="body-param-list"
+																									data-scope=""
+																									data-dataType="string">
+																									<td
+																										style="vertical-align:middle">
+																										<span data-role="name">grant_type</span>
+
+																										<br/>
+																										<span class="required" data-role="required">(required)</span>
+
+																									</td>
+																									<td>
+
+
+																										<input name="grant_type" type="text" class="form-control" data-role="value" value=""/>
+
+
+                                                  </td>
+																									<td
+																										style="vertical-align:middle">
+																										<p data-role="description"
+																											data-allow-edit="true"
+																											class="markdown">
+																											The grant
+																											type of the
+																											oAuth
+																											scheme.
+																											Possible
+																											values are
+																											authorization_code,
+																											refresh_token
+																										</p>
+																									</td>
+																								</tr>
+
+
+
+																								<tr data-role="body-param-list"
+																									data-scope=""
+																									data-dataType="string">
+																									<td
+																										style="vertical-align:middle">
+																										<span data-role="name">refresh_token</span>
+
+																									</td>
+																									<td>
+
+
+																										<input name="refresh_token" type="text" class="form-control" data-role="value" placeholder="" value=""/>
+
+
+                                                  </td>
+																									<td
+																										style="vertical-align:middle">
+																										<p data-role="description"
+																											data-allow-edit="true"
+																											class="markdown">
+																											Required if
+																											using
+																											refresh
+																											token grant
+																										</p>
+																									</td>
+																								</tr>
+
+
+
+																								<tr data-role="body-param-list"
+																									data-scope=""
+																									data-dataType="string">
+																									<td
+																										style="vertical-align:middle">
+																										<span data-role="name">access_type</span>
+
+																									</td>
+																									<td>
+
+
+																										<input name="access_type" type="text" class="form-control" data-role="value" placeholder="" value=""/>
+
+
+                                                  </td>
+																									<td
+																										style="vertical-align:middle">
+																										<p data-role="description"
+																											data-allow-edit="true"
+																											class="markdown">
+																											Set to
+																											<code>offline</code>
+																											to receive a
+																											refresh
+																											token on an
+																											authorization_code
+																											grant type
+																											request. Do
+																											not set to
+																											offline on a
+																											refresh_token
+																											grant type
+																											request.
+																										</p>
+																									</td>
+																								</tr>
+
+
+
+																								<tr data-role="body-param-list"
+																									data-scope=""
+																									data-dataType="string">
+																									<td
+																										style="vertical-align:middle">
+																										<span data-role="name">code</span>
+
+																									</td>
+																									<td>
+
+
+																										<input name="code" type="text" class="form-control" data-role="value" placeholder="" value=""/>
+
+
+                                                  </td>
+																									<td
+																										style="vertical-align:middle">
+																										<p data-role="description"
+																											data-allow-edit="true"
+																											class="markdown">
+																											Required if
+																											trying to
+																											use
+																											authorization
+																											code grant
+																										</p>
+																									</td>
+																								</tr>
+
+
+
+																								<tr data-role="body-param-list"
+																									data-scope=""
+																									data-dataType="string">
+																									<td
+																										style="vertical-align:middle">
+																										<span data-role="name">client_id</span>
+
+																										<br/>
+																										<span class="required" data-role="required">(required)</span>
+
+																									</td>
+																									<td>
+
+
+																										<input name="client_id" type="text" class="form-control" data-role="value" value=""/>
+
+
+                                                  </td>
+																									<td
+																										style="vertical-align:middle">
+																										<p data-role="description"
+																											data-allow-edit="true"
+																											class="markdown">
+																											OAuth User
+																											ID of your
+																											application
+																										</p>
+																									</td>
+																								</tr>
+
+
+
+																								<tr data-role="body-param-list"
+																									data-scope=""
+																									data-dataType="string">
+																									<td
+																										style="vertical-align:middle">
+																										<span data-role="name">redirect_uri</span>
+
+																									</td>
+																									<td>
+
+
+																										<input name="redirect_uri" type="text" class="form-control" data-role="value" placeholder="" value=""/>
+
+
+                                                  </td>
+																									<td
+																										style="vertical-align:middle">
+																										<p data-role="description"
+																											data-allow-edit="true"
+																											class="markdown">
+																											Required if
+																											trying to
+																											use
+																											authorization
+																											code grant
+																										</p>
+																									</td>
+																								</tr>
+
+
+																							</tbody>
+																						</table>
+																					</div>
+																				</form>
+																			</div>
+																		</div>
+																	</div>
+
+																</div>
+
+
+
+																<!-- Try it out !! -->
+																<div class="panel panel-default">
+																	<div class="panel-heading">
+																		<h4 class="panel-title"
+																			style="display: inline;">Try it out !!</h4>
+																		<i id="headerParametersCollapse-arrow" class="glyphicon glyphicon-chevron-right" style="float:right;"></i>
+																	</div>
+																	<div id="tryitout-table"
+																		class="panel-collapse collapse in">
+																		<div class="panel-body">
+
+																			<!-- Request payload section -->
+																			<div class="request_payload">
+																				<ul class="nav nav-pills"
+																					data-role="request-payload-link">
+																					<li class="active">
+																						<a href="javascript:void(0)"
+																							data-role="example-link">Value</a>
+																					</li>
+
+																					<li>
+																						<a href="javascript:void(0)"
+																							data-role="docs-link">Description</a>
+																					</li>
+
+																					<li>
+																						<a href="javascript:void(0)"
+																							data-role="schema-link">Schema</a>
+																					</li>
+																				</ul>
+
+																				<div data-role="request-payload-docs"
+																					class="docs">
+																					Request a token
+																				</div>
+
+																				<div
+																					data-role="request-payload-example">
+																					<textarea class="payload_text" data-format="application/x-www-form-urlencoded"></textarea>
+																				</div>
+																				<div data-role="request-payload-schema"
+																					style="display:none">
+																					<textarea class="payload_text_schema" data-format="application/x-www-form-urlencoded" style="width:100%;height:300px;"></textarea>
+																				</div>
+																			</div>
+
+
+
+																			<div class="operation_container">
+																				<!-- Basic authentication, custom token and OAuth 2 authentication container -->
+																				<div class="authentication"
+																					data-role="authentication_container">
+																					<div class="well basicauth"
+																						data-role="basic_auth_container">
+																						<p class="title">HTTP Basic</p>
+																						<div class="details">
+																							<a data-toggle="modal"
+																								role="button"
+																								href="#basicauth_modal"
+																								title="Set credentials."
+																								class="link_open_basicauth">Set...</a>
+																							<i title="Clear admin credentials." class="icon-remove"></i>
+																						</div>
+																					</div>
+																					<div class="well oauth2"
+																						data-role="oauth2_container">
+																						<p class="title">OAuth 2.0</p>
+																						<div class="details">
+																							<a data-toggle="modal"
+																								role="button"
+																								href="#oauth2_modal"
+																								title="Set credentials."
+																								class="link_open_oauth2">Set...</a>
+																							<i title="Clear admin credentials." class="icon-remove"></i>
+																						</div>
+																					</div>
+																					<div class="well customtoken"
+																						data-role="custom_token_container">
+																						<p class="title">API Key</p>
+																						<div class="details">
+																							<a data-toggle="modal"
+																								role="button"
+																								href="#customtoken_modal"
+																								title="Set credentials."
+																								class="link_open_customtoken">Set...</a>
+																							<i title="Clear admin credentials." class="icon-remove"></i>
+																						</div>
+																					</div>
+																				</div>
+																				<button id="send_request">SEND
+                    </button>
+																				<a href="javascript:void(0)"
+																					class="link_reset_default"
+																					title="Reset to default request parameters and body content.">RESET</a>
+																			</div>
+																			<!-- Request and response tab section -->
+																			<div class="request_response_tabs">
+																				<a href="javascript:void(0)"
+																					id="link_request_tab"
+																					data-role="request-link">Request</a>
+																				<a href="javascript:void(0)"
+																					id="link_response_tab"
+																					data-role="response-link"
+																					class="selected">Response</a>
+																				<a href="javascript:void(0)"
+																					id="link_curl_tab"
+																					data-role="curl-link">cURL</a>
+																			</div>
+																			<!-- Request and response container -->
+																			<div id="request_response_container">
+																				<div class="response"
+																					data-role="response-container">
+																					<p>Make a request and see the
+																						response.</p>
+																				</div>
+																				<div class="request"
+																					data-role="request-container">
+																					<p>Make a request and see the
+																						response.</p>
+																				</div>
+																				<div class="curl"
+																					data-role="curl-container">
+																					<p>Make a request and see the
+																						response.</p>
+																				</div>
+																			</div>
+
+
+
+																		</div>
+																	</div>
+																</div>
+																<!-- Try it out !! -->
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<!--/.col-sm-12 -->
+											</div><!-- #method_content -->
+											<div class="col-sm-5">
+												<div class="well well-sm">
+													<div class="table-responsive">
+														<table class="table table-condensed table-resource-summary">
+															<div class="resource_summary">
+																<thead>
+																	<tr>
+																		<td colspan="2">
+																			<h4>Resource Summary</h4>
+																		</td>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr class="authType">
+																		<td>
+																			<p class="title">Security</p>
+																		</td>
+																		<td>
+																			<p class="data auth_type"
+																				data-role="auth-type"></p>
+																		</td>
+																	</tr>
+
+
+																	<tr>
+																		<td>
+																			<p class="title">Content Type</p>
+																		</td>
+																		<td>
+																			<p class="data content-type-source-body"
+																				data-role="content-type">
+																				application/x-www-form-urlencoded
+																			</p>
+																		</td>
+																	</tr>
+
+
+
+																	<tr>
+																		<td>
+																			<p class="title">Category</p>
+																		</td>
+																		<td>
+																			<p class="data" data-role="category">
+																				Authentication
+																			</p>
+																		</td>
+																	</tr>
+
+																</tbody>
+															</div>
+															<!--/.resource_summary -->
+														</table>
+													</div>
+													<!-- Resource summary - right side info section -->
+												</div>
+
+
+
+												<div class="panel-group" id="response_summary"
+													style="margin-bottom: 20px;">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h4 style="display: inline;">Response Summary</h4>
+															<i id="headerParametersCollapse-arrow" class="glyphicon glyphicon-chevron-right" style="float:right;"></i>
+														</div>
+														<div class="panel-collapse collapse in">
+															<div class="panel-body">
+
+																<div class="response_summary">
+
+																	<div class="response" data-role="response-schema">
+																		<ul class="nav nav-pills nav-justified resource_summary"
+																			style="font-size:95%">
+																			<li class="active">
+																				<a href="#showResponseBodyJSON"
+																					data-toggle="tab">JSON</a>
+																			</li>
+																			<li class="">
+																				<a href="#showResponseBodySchema"
+																					data-toggle="tab">Schema</a>
+																			</li>
+																		</ul>
+																		<div class="tab-content"
+																			style=" padding: .5px; margin: 5px 0;">
+																			<div id="showResponseBodyJSON"
+																				class="tab-pane fade in active"
+																				style="border: 1px solid #ccc;    border-radius: 4px;    box-sizing: border-box;">
+																				<textarea id="response_body_example"  class="text_schema" format="application/javascript">
+									{
+  &quot;$ref&quot; : &quot;#/definitions/EASObject&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}
+								</textarea>
+																			</div>
+																			<div id="showResponseBodySchema"
+																				class="tab-pane fade ">
+																				<textarea readonly id="response_body_schema"
+								class="" format="application/javascript"
+								style="width: 615px;    height: 319px; " autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+									{
+  &quot;$ref&quot; : &quot;#/definitions/EASObject&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}{
+  &quot;$ref&quot; : &quot;#/definitions/WebServiceError&quot;
+}
+								</textarea>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!--/.response_summary -->
+															</div>
+														</div>
+														<!-- Response Summary - right side info section -->
+													</div>
+												</div>
+
+
+
+												<div class="well well-sm">
+													<table class="table table-condensed table-error-codes">
+														<div class="error_codes">
+															<thead>
+																<tr>
+																	<td colspan="3">
+																		<h4>Resource Error Codes</h4>
+																	</td>
+																</tr>
+															</thead>
+															<tbody>
+																<tr class="headingsErrorCodes">
+																	<td>
+																		<p class="httpCode-title">HTTP Code</p>
+																	</td>
+																	<!--
+                <td>
+                    <p class="errorCode-title">Error Code</p>
+                </td> -->
+																	<td>
+																		<p class="errorDesc-title">Description</p>
+																	</td>
+																</tr>
+
+																<tr class="listErrorCodes"
+																	data-role="response_errors_list">
+																	<td>
+																		<p class="httpCode-title">400</p>
+																	</td>
+																	<!--
+            <td>
+                <p class="errorCode-title">400</p>
+            </td>-->
+																	<td>
+																		<p class="errorDesc-title">An error message
+																			indicating the validation problem with the
+																			request.</p>
+																	</td>
+																</tr>
+
+																<tr class="listErrorCodes"
+																	data-role="response_errors_list">
+																	<td>
+																		<p class="httpCode-title">401</p>
+																	</td>
+																	<!--
+            <td>
+                <p class="errorCode-title">401</p>
+            </td>-->
+																	<td>
+																		<p class="errorDesc-title">An error message
+																			indicating the caller must pass valid
+																			credentials in the request body.</p>
+																	</td>
+																</tr>
+
+																<tr class="listErrorCodes"
+																	data-role="response_errors_list">
+																	<td>
+																		<p class="httpCode-title">500</p>
+																	</td>
+																	<!--
+            <td>
+                <p class="errorCode-title">500</p>
+            </td>-->
+																	<td>
+																		<p class="errorDesc-title">An error message
+																			indicating there was an unexpected server
+																			error.</p>
+																	</td>
+																</tr>
+
+																<tr class="listErrorCodes"
+																	data-role="response_errors_list">
+																	<td>
+																		<p class="httpCode-title">403</p>
+																	</td>
+																	<!--
+            <td>
+                <p class="errorCode-title">403</p>
+            </td>-->
+																	<td>
+																		<p class="errorDesc-title">An error message
+																			indicating the caller doesn't have access to
+																			the account in the request.</p>
+																	</td>
+																</tr>
+
+																<tr class="listErrorCodes"
+																	data-role="response_errors_list">
+																	<td>
+																		<p class="httpCode-title">503</p>
+																	</td>
+																	<!--
+            <td>
+                <p class="errorCode-title">503</p>
+            </td>-->
+																	<td>
+																		<p class="errorDesc-title">An error message
+																			indicating there is a temporary problem
+																			responding.</p>
+																	</td>
+																</tr>
+
+
+															</tbody>
+														</div>
+														<!--/.resource_summary -->
+													</table>
+												</div>
+
+
+											</div>
+											<div id="working_alert">
+												<p>Working...</p>
+											</div>
+											<!-- Basic authentication modal -->
+											<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+												id="modal_container" data-role="basic_auth_modal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close button_close_modal" data-dismiss="modal" aria-hidden="true">&times;</button>
+															<h3 class="modal-title">Set Authentication</h3>
+														</div>
+														<div class="modal-body">
+															<form class="form-horizontal">
+																<div class="error_container"></div>
+																<div class="form-group">
+																	<label class="control-label" for="inputEmail">Email</label>
+																	<input  class="form-control" type="text" id="inputEmail" placeholder="Email"/>
+                    </div>
+																	<div class="form-group">
+																		<label class="control-label" for="inputPassword">Password</label>
+																		<input class="form-control" type="password" id="inputPassword" placeholder="Password"/>
+                    </div>
+															</form>
+														</div>
+														<div class="modal-footer">
+															<p>Your credentials are saved for the session only.</p>
+															<a class="btn btn-primary button_save_modal"
+																href="javascript:void(0)">Save</a>
+															<a class="button_close_modal"
+																href="javascript:void(0)">Cancel</a>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+											<!-- /.modal -->
+											<!-- OAuth 2 authentication modal -->
+											<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+												id="modal_container" data-role="oauth2_modal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close button_close_modal" data-dismiss="modal" aria-hidden="true">&times;</button>
+															<h3 class="modal-title">Request authentication permissions
+															</h3>
+														</div>
+														<div class="modal-body">
+															<div class="content">
+																<p>Making authentication API requests requires you to
+																	grant access to this app.</p>
+																<p>You will be directed to authentication to approve the
+																	use of your credentials and then returned to this
+																	page.</p>
+																<p>You can revoke these permissions at any time.</p>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<p>Your credentials are saved for the session only.</p>
+															<a class="btn btn-primary button_save_modal"
+																href="javascript:void(0)">OK</a>
+															<a class="button_close_modal"
+																href="javascript:void(0)">Cancel</a>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+											<!-- /.modal -->
+											<!-- Custom token authentication modal -->
+											<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+												id="modal_container" data-role="custom_token_modal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close button_close_modal" data-dismiss="modal" aria-hidden="true">&times;</button>
+															<h3 class="modal-title">Custom Token</h3>
+														</div>
+														<div class="modal-body">
+															<div class="content">
+																<form class="form-horizontal">
+																	<div data-role="custom_token_rows">
+																		<div data-role="custom_token_row">
+																			<div class="form-group">
+																				<label class="control-label">Name:</label>
+																				<input type="text" class="form-control" placeholder="Name" data-role="name">
+                                </div>
+																				<div class="form-group">
+																					<label class="control-label">Value:</label>
+																					<input type="text" class="form-control" placeholder="Value" data-role="value">
+                                </div>
+																				</div>
+																			</div>
+																			<div class="form-group">
+																				<label class="control-label">Header:</label>
+																				<input type="radio" name="custom_token_type" data-role="header">
+                        </div><!-- /input-group -->
+																				<div class="form-group">
+																					<label class="control-label">Query:</label>
+																					<input type="radio" data-role="query" name="custom_token_type">
+                        </div><!-- /input-group -->
+																</form>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<a class="btn btn-primary button_save_modal"
+																href="javascript:void(0)">Ok</a>
+															<a class="button_close_modal"
+																href="javascript:void(0)">Cancel</a>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+											<!-- /.modal -->
+											<!-- Org admin authentication modal -->
+											<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+												id="modal_container" data-role="edit_auth_modal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close button_close_modal" data-dismiss="modal" aria-hidden="true">&times;</button>
+															<h3 class="modal-title">Set Organization Admin Credentials
+															</h3>
+														</div>
+														<div class="modal-body">
+															<form class="form-horizontal">
+																<div class="error_container"></div>
+																<div class="form-group">
+																	<label class="control-label" for="inputEmail">Email</label>
+																	<input  class="form-control" type="text" id="inputEmail" placeholder="Email"/>
+                    </div>
+																	<div class="form-group">
+																		<label class="control-label" for="inputPassword">Password</label>
+																		<input class="form-control" type="password" id="inputPassword" placeholder="Password"/>
+                    </div>
+															</form>
+														</div>
+														<div class="modal-footer">
+															<p>Your credentials are saved for the session only.</p>
+															<a class="btn btn-primary button_save_modal"
+																href="javascript:void(0)">Save</a>
+															<a class="button_close_modal"
+																href="javascript:void(0)">Cancel</a>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+											<!-- /.modal -->
+											<!-- Confirm the changes modal -->
+											<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+												id="modal_container" data-role="confirm_modal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close button_close_modal" data-dismiss="modal" aria-hidden="true">&times;</button>
+															<h3 class="modal-title">Warning</h3>
+														</div>
+														<div class="modal-body">
+															<div class="content">
+																<p>Your changes have not been saved.</p>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<a class="btn btn-primary button_save_modal"
+																href="javascript:void(0)">Save</a>
+															<a class="button_close_modal"
+																href="javascript:void(0)">Discard</a>
+														</div>
+													</div>
+													<!-- /.modal-content -->
+												</div>
+												<!-- /.modal-dialog -->
+											</div>
+											<!-- /.modal -->
+											<div id="apigee-apimodel-bodysample" style="display:none"></div>
+											<div id="apigee-apimodel-bodydoc" style="display:none">Request a token</div>
+											<script type="text/javascript">
+												//IE fix for Array.from()
+if (!Array.from) {
+  Array.from = (function () {
+    var toStr = Object.prototype.toString;
+    var isCallable = function (fn) {
+      return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+    };
+    var toInteger = function (value) {
+      var number = Number(value);
+      if (isNaN(number)) { return 0; }
+      if (number === 0 || !isFinite(number)) { return number; }
+      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+    };
+    var maxSafeInteger = Math.pow(2, 53) - 1;
+    var toLength = function (value) {
+      var len = toInteger(value);
+      return Math.min(Math.max(len, 0), maxSafeInteger);
+    };
+
+    // The length property of the from method is 1.
+    return function from(arrayLike/*, mapFn, thisArg */) {
+      // 1. Let C be the this value.
+      var C = this;
+
+      // 2. Let items be ToObject(arrayLike).
+      var items = Object(arrayLike);
+
+      // 3. ReturnIfAbrupt(items).
+      if (arrayLike == null) {
+        throw new TypeError("Array.from requires an array-like object - not null or undefined");
+      }
+
+      // 4. If mapfn is undefined, then let mapping be false.
+      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+      var T;
+      if (typeof mapFn !== 'undefined') {
+        // 5. else
+        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+        if (!isCallable(mapFn)) {
+          throw new TypeError('Array.from: when provided, the second argument must be a function');
+        }
+
+        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        if (arguments.length > 2) {
+          T = arguments[2];
+        }
+      }
+
+      // 10. Let lenValue be Get(items, "length").
+      // 11. Let len be ToLength(lenValue).
+      var len = toLength(items.length);
+
+      // 13. If IsConstructor(C) is true, then
+      // 13. a. Let A be the result of calling the [[Construct]] internal method of C with an argument list containing the single item len.
+      // 14. a. Else, Let A be ArrayCreate(len).
+      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+      // 16. Let k be 0.
+      var k = 0;
+      // 17. Repeat, while k < len… (also steps a - h)
+      var kValue;
+      while (k < len) {
+        kValue = items[k];
+        if (mapFn) {
+          A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+      // 18. Let putStatus be Put(A, "length", len, true).
+      A.length = len;
+      // 20. Return A.
+      return A;
+    };
+  }());
+}
+//end IE Fix
+
+
+	//override Apigee methods.
+	Apigee.APIModel.SwaggerModelProperty = function(name, obj) {
+	  this.name = name;
+
+	  this.dataType = obj["$ref"] || obj.type || obj.dataType ;
+	  this.properties = obj.properties;
+	  if(this.dataType == null) {
+		this.dataType = this.name;
+	  }
+	  this.dataType = this.dataType.replace("#/definitions/", "");
+	  this.isCollection = this.dataType && (this.dataType.toLowerCase() === 'array' || this.dataType.toLowerCase() === 'list' || this.dataType.toLowerCase() === 'set');
+	  this.descr = obj.description;
+	  this.required = obj.required;
+	  if (obj.items != null) {
+		if (obj.items.type != null) {
+		  this.refDataType = obj.items.type;
+		}
+		if (obj.items.$ref != null) {
+		  this.refDataType = obj.items.$ref;
+		}
+		if(this.refDataType){
+			this.refDataType = this.refDataType.replace("#/definitions/", "");
+		}
+	  }
+	  this.dataTypeWithRef = this.refDataType != null ? (this.dataType + '[' + this.refDataType + ']') : this.dataType;
+	  if (obj.allowableValues != null) {
+		this.valueType = obj.allowableValues.valueType;
+		this.values = obj.allowableValues.values;
+		if (this.values != null) {
+		  this.valuesString = "'" + this.values.join("' or '") + "'";
+		}
+	  }
+	  if (obj["enum"] != null) {
+		this.valueType = "string";
+		this.values = obj["enum"];
+		if (this.values != null) {
+		  this.valueString = "'" + this.values.join("' or '") + "'";
+		}
+	  }
+	  
+	  
+	 
+	  this.getSampleValue = function(modelsToIgnore) {
+		modelsToIgnore = (modelsToIgnore||[]);
+		var result ="";
+		if ((this.refModel != null) && (modelsToIgnore.indexOf(this.refModel.name) === -1)) {
+		  result = this.refModel.createJSONSample(modelsToIgnore);
+		} else if (this.properties != null){			
+			//find out if this.name is a super class
+			var subModels = getSubModels(this.name);
+			if (subModels.length == 0){
+				result = makeJSONString(this.properties);
+			} else {				
+				result =  "The type <" + this.name +"> has the following subclasses [" + subModels.join(", ") + "] descriptions are listed below";
+			}
+		}else if (this.valueString != null && this.valueString != ""){ 
+			result = this.valueString;
+		}else {
+		  if (this.isCollection) {
+			if(this.refDataType == null || this.refDataType == "object"){
+				//get the refDataType
+				if ( Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].allOf &&
+					Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].allOf.length != 0){				
+					if( Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].allOf[1].properties[this.name]){
+						if (Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].allOf[1].properties[this.name].items) { 	
+							var refDataType = Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].allOf[1].properties[this.name].items.$ref.replace("#/definitions/", "");
+							result = result + this.toSampleValue(refDataType, modelsToIgnore);
+							result = JSON.parse(result);
+						}						
+					} else {
+						var type = Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].allOf[0].$ref.replace("#/definitions/", "");
+						var subModels = getSubModels(type);					
+						result =  "The type <" + type +"> has the following subclasses [" + subModels.join(", ") + "] descriptions are listed below";
+					}
+				}
+				else if(  Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].properties[this.name].items ) {
+					var refDataType = Apigee.APIModel.originalExpandedSchema[modelsToIgnore[0]].properties[this.name].items.$ref.replace("#/definitions/", "");
+					result = result + this.toSampleValue(refDataType, modelsToIgnore);
+					result = JSON.parse(result);
+				} else if (Apigee.APIModel.originalExpandedSchema[modelsToIgnore[modelsToIgnore.length - 1]].properties[this.name].type == "array"){
+					result= {};
+				} else {
+					result = "";
+				}
+			} else{
+				result = this.toSampleValue(this.refDataType, modelsToIgnore);				
+			}
+		  } else {
+			result = this.toSampleValue(this.dataType, modelsToIgnore);			
+		  }
+		}
+		if( typeof  result  == "string" && result.indexOf('{') == 0){
+			result = JSON.parse(result);
+		}
+		if (this.isCollection) {
+		  return [result];
+		} else {
+		  return result;
+		}
+	  };
+	  this.toSampleValue = function(value, modelsToIgnore) {
+		var result;		
+		if (value === "integer") {
+		  result = 0;
+		} else if (value === "boolean") {
+		  result = false;
+		} else if (value === "double" || value === "number") {
+		  result = 0.0;
+		} else if (value === "string") {
+		  result = "string";
+		} else if (Apigee.APIModel.originalExpandedSchema[value]) {
+			var schemaModel = Apigee.APIModel.originalExpandedSchema[value];
+			
+			//find out if this.name is a super class
+			var subModels = getSubModels(value);
+			if (subModels.length != 0){				
+					var swaggerModel = new Apigee.APIModel.SwaggerModel( subModels[0], schemaModel);
+					//result = JSON.stringify(swaggerModel.createJSONSample(modelsToIgnore),null,2);			
+					result  =  "\"The type <" + value +"> has the following subclasses [" + subModels.join(", ") + "] descriptions are listed below\"";
+			}else if(schemaModel.properties){
+					var swaggerModel = new Apigee.APIModel.SwaggerModel( value, schemaModel);
+					result = JSON.stringify(swaggerModel.createJSONSample(modelsToIgnore),null,2);
+			} else if (schemaModel.allOf ){
+					result ="";
+					for( var index in schemaModel.allOf){
+						var childModel = schemaModel.allOf[index];
+						var modelName = "";
+						if (childModel.$ref ){
+							modelName = childModel.$ref.replace("#/definitions/", "");
+							childModel = Apigee.APIModel.expandedSchema[modelName];
+						} 						
+						var swaggerModel = new Apigee.APIModel.SwaggerModel( value+index, childModel);
+						result = JSON.stringify(swaggerModel.createJSONSample(modelsToIgnore),null,2) ;
+					}
+					//result = removeLastComma(result);					
+			} else {
+				result = JSON.stringify(value,null,2);
+			}
+		} else {
+		  result = value;
+		}
+		return result ;
+	  };
+	};
+	//end overrides	
+	
+	//Apigee additions..
+	
+	Apigee.APIModel.exampleJSONPrint = function() {
+    var schema; // A Code mirror editor for the response .
+    /**
+     * This method initializes the response  sample code mirror editor.
+     */
+    this.initexampleJSONPrint = function() {
+        if (jQuery('[data-role="response-schema"]').length) { // Check if response payload example element is available.
+            jQuery('[data-role="response-schema"]').children("textarea").show();
+            bodyElementValue = jQuery.trim(jQuery('[data-role="response-schema"]').find("textarea").val());
+            jQuery('.response textarea.text_schema').val(bodyElementValue);
+            bodyElement = jQuery('.response textarea.text_schema');
+            if (bodyElement) { // Set xml/json mode based on the response payload value.
+                var modeName = (bodyElement.data("format") == "application/xml") ? "xml" : "javascript";
+                schema = CodeMirror.fromTextArea( jQuery('.response textarea.text_schema').get(0), {
+                    mode: modeName,
+                    //lineNumbers: true,
+					readOnly: true					
+                });
+                if (schema.lineCount() <= 2) {
+                    schema.setSize('100%',schema.lineCount()*18);
+                } else {
+                    schema.setSize('100%',schema.lineCount()*15);
+                }
+
+            }
+           // jQuery('[data-role="response-schema"]').hide();
+        }
+    };
+    /*
+     * Get the response  sample editor value.
+     * @return {String} Value of a response  editor.
+     */
+    this.getResponsePayLoad = function() {
+        return schema.getValue();
+    };
+    /*
+     * Set response  sample editor value.
+     * @param {string}  A response payload value.
+     */
+    this.setResponse = function(payload) {
+        schema.setValue(payload);
+    };
+};
+	
+	// end additions..
+	
+
+	var makeJSONString = function(obj, depth){
+		var result = "";		
+		var calls = depth || 0;
+		calls++;
+		if( calls == 10){
+			return;
+		}
+		if(obj != null){
+			if (obj.type == "array")
+				if( obj.items){
+					return "["+makeJSONString(obj.items.properties, calls)+"]";
+				} else {
+				return "[{}]";
+				}
+			if( obj.type == "string")
+				return '"'+obj.type+'"';
+			if( obj.type == "number"  || obj.type == "integer")
+				return obj.default||0;
+			if ( obj.type == "boolean")
+				return obj.default||false;
+			if ( typeof obj == "string")
+				return '"'+obj+'"';
+		
+			//must be an Object
+			result = result + "{ ";
+			for (var key in obj) {
+		
+			if (obj.hasOwnProperty(key)) {				  
+				var property = obj[key];
+				if(property.type == "array"){
+					result = result + '"'+key+'": [{';						
+					if( property.items.properties){
+						for (var val in property.items.properties){
+							if( property.items.properties.hasOwnProperty( val ) ){
+								result = result +  '"'+ val+ '":'+makeJSONString(property.items.properties[val], calls)  + ",";
+							}
+						}												
+					}  else if ( property.items.allOf){
+						for( var val in property.items.allOf){
+							result = result + makeJSONString(property.items.allOf[val].properties, calls) + ",";
+						}						
+					}
+					result =removeLastComma(result) + "}],";
+				} else if (property.type == "object"){
+					result +=  '"'+key+'":'+makeJSONString(property.properties, calls) +",";
+				} else if ( key == "type" && property == "object"){
+					result +=  '"'+key+'":'+makeJSONString(obj.properties, calls) +",";
+				}else {
+					result += '"'+key+'":'+makeJSONString(property, calls) +",";
+				}
+			}
+		   
+			} 
+			result = removeLastComma(result) + "}";
+		}
+		return result;
+	}
+	
+	function removeLastComma(strng){		
+		var n=strng.lastIndexOf(",");
+		if( n == -1){
+			return strng;
+		}
+		var a=strng.substring(0,n) 
+		return a;
+	}
+
+	//end of additions
+	
+    var Apigee = Apigee || {};
+    Apigee.APIModel = Apigee.APIModel || {};
+    Apigee.APIModel.apiName = "authentication";
+    Apigee.APIModel.revisionNumber = "4";
+    Apigee.APIModel.organizationName = "RetailOrg";
+    Apigee.APIModel.resourceId = "4b07da97-8ca5-45a3-99f6-fc1d5f6d2df0";
+    Apigee.APIModel.methodId = "2f410bf9-2ec2-4ac9-9590-69216cf886bf";
+    Apigee.APIModel.methodType = "details";
+    Apigee.APIModel.apiKey = "";
+    Apigee.APIModel.location = "";
+	Apigee.APIModel.model = {"modifiedTime":1591024213931,"apiName":"authentication","resourceId":"4b07da97-8ca5-45a3-99f6-fc1d5f6d2df0","revisionNumber":4,"displayName":"Post Access Token","methods":[],"description":"<p>The token endpoint returns an access token along with an optional refresh token.<\/p>\n","changeLog":null,"isActive":null,"body":{"schema":null,"attachments":[],"doc":"Request a token","parameters":[{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"grant_type","options":null,"description":"The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token","type":"body","items":null,"required":true},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"refresh_token","options":null,"description":"Required if using refresh token grant","type":"body","items":null,"required":false},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"access_type","options":null,"description":"Set to <code>offline<\/code> to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.","type":"body","items":null,"required":false},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"code","options":null,"description":"Required if trying to use authorization code grant","type":"body","items":null,"required":false},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"client_id","options":null,"description":"OAuth User ID of your application","type":"body","items":null,"required":true},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"redirect_uri","options":null,"description":"Required if trying to use authorization code grant","type":"body","items":null,"required":false}],"contentType":"application\/x-www-form-urlencoded","sample":null,"accept":null},"defaultMethodTemplate":null,"parameterGroups":[],"path":"\/token","security":null,"isLatest":null,"revisionSchema":null,"createdTime":1544879549352,"modifiedBy":null,"revisions":null,"id":"2f410bf9-2ec2-4ac9-9590-69216cf886bf","latestRevisionNumber":null,"key":"2f410bf9-2ec2-4ac9-9590-69216cf886bf","apiId":"506982f1-cf1b-4402-aaba-dfad30292df0","organizationName":"RetailOrg","releaseVersion":null,"verb":"POST","resources":[],"resourceSchema":null,"resourceName":"\/token","activeRevisionInstance":null,"samples":null,"tags":["Authentication"],"baseUrl":"https:\/\/api.tdameritrade.com\/v1\/oauth2","apiRevisionId":"4a51a99f-c4d7-480a-be06-b79faccc8770","createdBy":null,"response":{"schema":{"dataType":"{\n  \"$ref\" : \"#\/definitions\/EASObject\"\n}{\n  \"$ref\" : \"#\/definitions\/WebServiceError\"\n}{\n  \"$ref\" : \"#\/definitions\/WebServiceError\"\n}{\n  \"$ref\" : \"#\/definitions\/WebServiceError\"\n}{\n  \"$ref\" : \"#\/definitions\/WebServiceError\"\n}{\n  \"$ref\" : \"#\/definitions\/WebServiceError\"\n}","doc":null},"doc":null,"parameters":[],"sample":null,"contentType":null,"errors":[{"code":"400","description":"An error message indicating the validation problem with the request.","httpStatusCode":null},{"code":"401","description":"An error message indicating the caller must pass valid credentials in the request body.","httpStatusCode":null},{"code":"500","description":"An error message indicating there was an unexpected server error.","httpStatusCode":null},{"code":"403","description":"An error message indicating the caller doesn't have access to the account in the request.","httpStatusCode":null},{"code":"503","description":"An error message indicating there is a temporary problem responding.","httpStatusCode":null}]},"schemas":[],"name":"Post Access Token","activeRevisionNumber":null,"defaultIndexTemplate":null,"parameters":[],"apiSchema":{"inlineSchema":null,"docUrl":null,"doc":null,"schemaNames":[],"expandedSchema":"{\"EASObject\":{\n  \"type\" : \"object\",\n  \"properties\" : {\n    \"access_token\" : {\n      \"type\" : \"string\"\n    },\n    \"refresh_token\" : {\n      \"type\" : \"string\"\n    },\n    \"token_type\" : {\n      \"type\" : \"string\"\n    },\n    \"expires_in\" : {\n      \"type\" : \"integer\",\n      \"format\" : \"int32\"\n    },\n    \"scope\" : {\n      \"type\" : \"string\"\n    },\n    \"refresh_token_expires_in\" : {\n      \"type\" : \"integer\",\n      \"format\" : \"int32\"\n    }\n  }\n},\"WebServiceError\":{\n  \"type\" : \"object\",\n  \"properties\" : {\n    \"error\" : {\n      \"type\" : \"string\"\n    }\n  }\n}}","type":"json","schemaUrl":null},"customAttributes":[{"name":"SWAGGER_METHOD_SUMMARY","value":"Request a token","attributeGroupName":null}]};
+    Apigee.APIModel.templateAuthName = "";
+    Apigee.APIModel.verb="POST".toLowerCase();
+    // Init hasRawBody to false.
+    Apigee.APIModel.hasRawBody = false;
+
+    
+    Apigee.APIModel.bodyParameters=[{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"grant_type","options":null,"description":"The grant type of the oAuth scheme. Possible values are authorization_code, refresh_token","type":"body","items":null,"required":true},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"refresh_token","options":null,"description":"Required if using refresh token grant","type":"body","items":null,"required":false},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"access_type","options":null,"description":"Set to <code>offline<\/code> to receive a refresh token on an authorization_code grant type request. Do not set to offline on a refresh_token grant type request.","type":"body","items":null,"required":false},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"code","options":null,"description":"Required if trying to use authorization code grant","type":"body","items":null,"required":false},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"client_id","options":null,"description":"OAuth User ID of your application","type":"body","items":null,"required":true},{"schema":null,"allowMultiple":false,"defaultValue":null,"dataType":"string","scope":null,"name":"redirect_uri","options":null,"description":"Required if trying to use authorization code grant","type":"body","items":null,"required":false}];
+    // The following two divs contain HTML-encoded text, to allow us to handle
+    // text which includes quotes.
+    Apigee.APIModel.bodySample = jQuery('div#apigee-apimodel-bodysample').text();
+    if (Apigee.APIModel.bodySample.length == 0) {
+        Apigee.APIModel.bodySample = false;
+    }
+    Apigee.APIModel.bodyDoc = jQuery('div#apigee-apimodel-bodydoc').text();
+    if (Apigee.APIModel.bodyDoc.length == 0) {
+        Apigee.APIModel.bodyDoc = false;
+    }
+    
+    
+    Apigee.APIModel.security = false;
+    
+    Apigee.APIModel.originalExpandedSchema={"EASObject":{
+  "type" : "object",
+  "properties" : {
+    "access_token" : {
+      "type" : "string"
+    },
+    "refresh_token" : {
+      "type" : "string"
+    },
+    "token_type" : {
+      "type" : "string"
+    },
+    "expires_in" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "scope" : {
+      "type" : "string"
+    },
+    "refresh_token_expires_in" : {
+      "type" : "integer",
+      "format" : "int32"
+    }
+  }
+},"WebServiceError":{
+  "type" : "object",
+  "properties" : {
+    "error" : {
+      "type" : "string"
+    }
+  }
+}};
+    Apigee.APIModel.expandedSchema={"EASObject":{
+  "type" : "object",
+  "properties" : {
+    "access_token" : {
+      "type" : "string"
+    },
+    "refresh_token" : {
+      "type" : "string"
+    },
+    "token_type" : {
+      "type" : "string"
+    },
+    "expires_in" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "scope" : {
+      "type" : "string"
+    },
+    "refresh_token_expires_in" : {
+      "type" : "integer",
+      "format" : "int32"
+    }
+  }
+},"WebServiceError":{
+  "type" : "object",
+  "properties" : {
+    "error" : {
+      "type" : "string"
+    }
+  }
+}};
+
+    if(Apigee.APIModel.bodyParameters) {
+        for(var i in Apigee.APIModel.bodyParameters) {
+            // If a parameter is type of object, set hasRawBody to true so we can remove body parameters section.
+            if(Apigee.APIModel.bodyParameters[i].dataType && Apigee.APIModel.bodyParameters[i].dataType == "object"){
+				Apigee.APIModel.hasRawBody = true;
+				if(Apigee.APIModel.bodyParameters[i].schema && JSON.parse(Apigee.APIModel.bodyParameters[i].schema).type == "string") {
+					Apigee.APIModel.hasRawBody = false;	
+				}
+            }
+            if(Apigee.APIModel.bodyParameters[i].schema) {
+                var resourceSchema = JSON.parse(Apigee.APIModel.bodyParameters[i].schema);
+                if (resourceSchema.$ref) {
+                    // There is a reference to the schema in the object.
+                    Apigee.APIModel.resourceName = resourceSchema.$ref;
+                    Apigee.APIModel.resourceName = Apigee.APIModel.resourceName.split("/");
+                    Apigee.APIModel.resourceName = Apigee.APIModel.resourceName[Apigee.APIModel.resourceName.length - 1];
+                    break;
+                } else if(resourceSchema.items && resourceSchema.items.$ref) {
+                    // There is an array w/a reference.
+                    Apigee.APIModel.resourceName = resourceSchema.items.$ref;
+                    Apigee.APIModel.resourceName = Apigee.APIModel.resourceName.split("/");
+                    Apigee.APIModel.resourceName = Apigee.APIModel.resourceName[Apigee.APIModel.resourceName.length - 1];
+                }
+            }
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // SECURITY
+    // -------------------------------------------------------------------------
+    var security = [];
+    if(Apigee.APIModel.security) {
+        for (i=0;i<Apigee.APIModel.security.length;i++){
+            security.push(Apigee.APIModel.security[i]);
+        }
+    }
+
+    // If security is set in the model, display the values in the resource
+    // summary table, and pull out the default security values if set.
+    var newAuth = [];
+    var authTypeEl = jQuery("[data-role='auth-type']");
+    authTypeEl.text(newAuth);
+    for (var i in security){
+        for (var keys in security[i]) {
+            if (typeof security[i] == 'string') {
+                security[i] = JSON.parse(security[i]);
+            }
+            if (security[i][keys].type) {
+                switch (security[i][keys].type) {
+                    case 'OAUTH2':
+                        newAuth.push('OAuth 2.0');
+                        secName = keys;
+                        break;
+                    case 'BASIC':
+                        newAuth.push('HTTP Basic');
+                        break;
+                    case 'APIKEY':
+                        newAuth.push('API Key');
+                        if (security[i][keys].templateauths) {
+                            for (var key in security[i][keys].templateauths) {
+                                Apigee.APIModel.apiKey = security[i][keys].templateauths[key];
+                                Apigee.APIModel.location = security[i][keys].location.toLowerCase();
+                                Apigee.APIModel.templateAuthName = key.toLowerCase();
+                            }
+                        }
+                        break
+                }
+            }
+            // If the security object does not have any template auths, it will
+            // have an attribute named "error" that will have the value
+            // "No templateAuth found for KEYNAME", where KEYNAME is the
+            // name of the security object.
+            else if (typeof security[i][keys] === "object" && security[i][keys].hasOwnProperty("error")) {
+                newAuth.push("API Key");
+            }
+        }
+    }
+    if (newAuth.length == 0) {
+        newAuth.push('None');
+    }
+    authTypeEl.text(newAuth.join(', '));
+	
+	
+	var getSuperClasses = function(){
+		var superClasses = new Set();
+		var i=0;		
+		for( var subModelName in Apigee.APIModel.originalExpandedSchema ){
+			var subModel = Apigee.APIModel.originalExpandedSchema[subModelName];
+			if( subModel.allOf && subModel.allOf[0] && subModel.allOf[0].$ref)
+			superClasses.add(subModel.allOf[0].$ref.replace("#/definitions/", ""));
+		}
+		return Array.from(superClasses);
+	}
+	
+	var getSubModels = function(model){
+		var subModels =[];
+		var i=0;		
+		for( var subModelName in Apigee.APIModel.originalExpandedSchema ){
+			var subModel = Apigee.APIModel.originalExpandedSchema[subModelName];
+			if( subModel.allOf && subModel.allOf[0] && subModel.allOf[0].$ref.toLowerCase() == ("#/definitions/"+model).toLowerCase())
+			subModels[i++]=subModelName;
+		}
+		return subModels;
+	}
+
+    // -------------------------------------------------------------------------
+    // PAYLOAD
+    // -------------------------------------------------------------------------
+	
+	var exampleJSONPrint = "";
+	var exampleSchemaPrint = "";
+	
+    var payload = jQuery(".request_payload");
+    var payloadTextSchemaEl = jQuery("textarea.payload_text_schema");
+    var originalSchemaObj = null;
+    if (Apigee.APIModel.expandedSchema) {
+        originalSchemaObj = Apigee.APIModel.expandedSchema;
+        expandSchema(originalSchemaObj);
+    }
+
+	var getUndefinedClasses = function(exampleJSON){
+		var regex = /type <(.*?)>/g;
+		var matches, undefinedClasses = [];
+		while (matches = regex.exec(exampleJSON)) {
+			undefinedClasses.push(matches[1]);
+		}
+		return undefinedClasses;
+	}
+	
+	var printClassDef = function(superClass){
+		var subModels = getSubModels(superClass);
+		
+		exampleJSON = [];
+		schema =[];
+		var i =0;
+		for( var s in subModels){
+			var model = subModels[s];
+			exampleJSON[i] =	 "//"+model + ":\n" + JSON.stringify(new Apigee.APIModel.SwaggerModel( model, Apigee.APIModel.expandedSchema[model].allOf[1]).createJSONSample(false),null,2);
+			schema [i]=   "//"+model + ":\n" + JSON.stringify(originalSchemaObj[model].allOf[1].properties, null, 2);
+			i++;
+		}					
+		exampleJSONPrint  += "\n\n//The class <" +superClass +"> has the \n//following subclasses: \n//-" + subModels.join("\n//-") + "\n//JSON for each are listed below: \n\n"  + exampleJSON.join("\n\n//OR\n\n");
+		exampleSchemaPrint += "\n\n//The class <" + superClass +"> has the following subclasses: \n//-" + subModels.join("\n//-") + "\n//schemas for each are listed below: \n\n"  + schema.join("\n\n//OR\n\n");
+	
+	}
+	
+	var definedClasses = new Set();
+	var printUndefinedClasses = function(undefinedClasses){
+		
+		var additionalUndefinedClasses = new Set();
+		for ( var uc in undefinedClasses){
+		
+			var undefinedClass = undefinedClasses[uc];
+			if( definedClasses.has(undefinedClass) ){
+				//skip it since it was defiend already
+			} else {
+				// add definition
+				definedClasses.add(undefinedClass);
+				
+				//print definition
+				printClassDef(undefinedClass);
+				
+				//check if any new undefined classes added?
+				var possibleUndefinedClasses = getUndefinedClasses(exampleJSONPrint);
+				for( var puc in possibleUndefinedClasses) {
+					var possibleUndefinedClass = possibleUndefinedClasses[puc];
+					if ( definedClasses.has(possibleUndefinedClass)){
+						//skip since it was defined already
+					} else {
+						additionalUndefinedClasses.add(possibleUndefinedClass);
+					}
+				}
+				printUndefinedClasses( Array.from(additionalUndefinedClasses) );
+			}
+		}
+	}
+	
+    if (Apigee.APIModel.verb != "put" && Apigee.APIModel.verb != "patch" && Apigee.APIModel.verb != "delete") {
+        // Remove request payload for verbs that carry no payload.
+        payload.remove();
+		
+		
+		// if we have a Response Summary section. find the model definition and get the JSON representation
+		
+		var isCollection = false;
+		if( Apigee.APIModel.model.response.schema.dataType.split('}{')[0].indexOf("array") > 0  ||
+			Apigee.APIModel.model.response.schema.dataType.split('}{')[0].indexOf("list")  > 0 || 
+			Apigee.APIModel.model.response.schema.dataType.split('}{')[0].indexOf("set")  > 0){		
+			isCollection = true;
+		}
+		var responseTypeName = "";
+		var indexOfDefinition =  Apigee.APIModel.model.response.schema.dataType.split('}{')[0].indexOf("#/definitions/");
+		if(indexOfDefinition > 0 ){
+			responseTypeName = Apigee.APIModel.model.response.schema.dataType.split('}{')[0].substring(indexOfDefinition + 14);
+			//trim the quotes and braces..
+			if(responseTypeName.indexOf('"') >0){
+				responseTypeName = responseTypeName.substring(0,responseTypeName.indexOf('"'));
+			}
+		}
+			
+		//find out if Apigee.APIModel.resourceName is a superclass
+		var subModels = getSubModels(responseTypeName);
+			
+		if(subModels.length == 0){						
+			if( isCollection ){		
+				exampleJSONPrint += "[\n";
+				exampleSchemaPrint +=  "[\n";
+			}
+			exampleJSONPrint +="//"+responseTypeName+":\n"+JSON.stringify(new Apigee.APIModel.SwaggerModel( responseTypeName, Apigee.APIModel.expandedSchema[responseTypeName]).createJSONSample(false),null,2);
+			exampleSchemaPrint  +=  "//"+responseTypeName+":\n"+JSON.stringify(originalSchemaObj[responseTypeName].properties, null, 2);
+			
+			
+			if( isCollection ){		
+				exampleJSONPrint += "\n]";
+				exampleSchemaPrint +=  "\n]";
+			}	
+
+			//get list of additional (super) classes
+			
+			var superClasses = getSuperClasses();			
+			var undefinedClasses = getUndefinedClasses(exampleJSONPrint);
+			
+			//list additional classes here only if they were mentioned above			
+			printUndefinedClasses(undefinedClasses);
+			
+			
+			
+		} else {
+			
+			var exampleJSON = [];
+			var schema = [];
+			
+			if( isCollection ){		
+					exampleJSONPrint += "[\n";
+					exampleSchemaPrint +=  "[\n";
+					exampleJSONPrint += responseTypeName;
+					exampleSchemaPrint += responseTypeName;
+					exampleJSONPrint += "\n]";
+					exampleSchemaPrint +=  "\n]";
+			}
+				
+			var i=0;
+			for ( s in subModels ){
+				var model = subModels[s];
+								
+				exampleJSON[i] =	 "//"+model + ":\n" + JSON.stringify(new Apigee.APIModel.SwaggerModel( model, Apigee.APIModel.expandedSchema[model].allOf[1]).createJSONSample(false),null,2);
+				schema [i]=   "//"+model + ":\n" + JSON.stringify(originalSchemaObj[model].allOf[1].properties, null, 2);
+				i++;	
+			}
+			
+			exampleJSONPrint  += "\n\n//The response class <" +responseTypeName +"> has the \n//following subclasses: \n//-" + subModels.join("\n//-") + "\n//JSON for each are listed below: \n\n"  + exampleJSON.join("\n\n//OR\n\n");
+			exampleSchemaPrint += "The response class <" + responseTypeName +"> has the following subclasses: \n-" + subModels.join("\n-") + "\nschemas for each are listed below: \n\n"  + schema.join("\n\n//OR\n\n");
+		}
+				
+		//change id response_body_example
+		
+		exampleJSONPrint=exampleJSONPrint.replace('\\"','');
+		exampleSchemaPrint=exampleSchemaPrint.replace('\\"','');
+		
+		jQuery('#response_body_example').html(exampleJSONPrint);
+		jQuery('#response_body_schema').html(exampleSchemaPrint);
+		
+    }
+    else {
+        // If a sample exists, use it to populate the body payload text area,
+        // else create an example from the api schema to populate the body
+        // payload.
+        if (Apigee.APIModel.bodySample) {
+            // Class payload_text is the request body to send.
+            jQuery("textarea.payload_text").val(Apigee.APIModel.bodySample);
+        }
+		
+      	if(Apigee.APIModel.resourceName != '' && Apigee.APIModel.expandedSchema[Apigee.APIModel.resourceName]) {
+            
+			//find out if Apigee.APIModel.resourceName is a superclass
+			var subModels = getSubModels(Apigee.APIModel.resourceName);
+			
+			if(subModels.length == 0){			
+				// Put the schema into the Schema tab in the response body.
+				exampleSchemaPrint = JSON.stringify(originalSchemaObj[Apigee.APIModel.resourceName].properties, null, 2);
+				exampleSchemaPrint=exampleSchemaPrint.replace('\\"','');
+			
+        		
+				//Swagger API Schema implementation	
+				var swaggerModel = new Apigee.APIModel.SwaggerModel( Apigee.APIModel.resourceName, Apigee.APIModel.originalExpandedSchema[Apigee.APIModel.resourceName]);
+				var sampleFromAPISchema = swaggerModel.createJSONSample( false );				
+				
+				exampleJSONPrint  = JSON.stringify(sampleFromAPISchema,null,4).replace('\\"','');
+				
+				
+				//get list of additional (super) classes		
+						
+				undefinedClasses = getUndefinedClasses(exampleJSONPrint);
+				
+				//list additional classes here only if they were mentioned above			
+				printUndefinedClasses(undefinedClasses);
+				
+				payloadTextSchemaEl.val(exampleSchemaPrint);
+				jQuery("textarea.payload_text").val(exampleJSONPrint);
+				
+				Apigee.APIModel.resourceNameOrig = Apigee.APIModel.resourceName;
+				Apigee.APIModel.resourceName = ""; // this prevents default behavior of replacing the textarea.payload_text
+				
+			}  else { 
+				var exampleSchema = [];
+				var sampleFromAPISchemas = [];
+				
+				var i=0;
+				for ( s in subModels ){
+					var model = subModels[s];
+					exampleSchema[i] = model + ":\n" + JSON.stringify(originalSchemaObj[model].allOf[1].properties, null, 2);
+					
+					var swaggerModel = new Apigee.APIModel.SwaggerModel( model, Apigee.APIModel.originalExpandedSchema[model].allOf[1]);
+					var sampleFromAPISchema = swaggerModel.createJSONSample( false );
+					sampleFromAPISchemas[i] =  "//"+model + ":\n" + JSON.stringify(sampleFromAPISchema,null,4);
+					i++;
+				}			
+
+				payloadTextSchemaEl.val("The request class <" + Apigee.APIModel.resourceName+"> has the following subclasses: \n//-" + subModels.join("\n//-") + "\nschemas for each are listed below: \n\n"  + exampleSchema.join("\n\n//OR\n\n"));
+				jQuery("textarea.payload_text").val("//The request class <" + Apigee.APIModel.resourceName+"> has the following \n//subclasses: \n//-" + subModels.join("\n//-") + "\n//sample JSON for each are listed below: \n\n"  + sampleFromAPISchemas.join("\n\n//OR\n\n"));			
+				
+				Apigee.APIModel.resourceNameOrig = Apigee.APIModel.resourceName;
+				Apigee.APIModel.resourceName = ""; // this prevents default behavior of replacing the textarea.payload_text
+			}
+		}
+		
+		// POST / PUT / PATCH should not have a response body
+		jQuery("#response_summary").hide();
+
+    }
+
+    // If any select box has a default value, make sure it is set.
+    jQuery('select.has-default-value').each(function(index) {
+        var defaultValue = jQuery(this).attr('data-default-value');
+        jQuery('option', this).each(function (idx) {
+            if (jQuery(this).attr('value') == defaultValue) {
+                jQuery(this).attr('selected', 'selected');
+            }
+        });
+    });
+
+	
+		// if user has apps ( they have to be logged in) then get the app keys  and make them available in the apikey drop down
+	var mapOfApps = new Map();
+	jQuery.ajax({
+		url: "/user/me/apps",
+		success: function(data) { 
+			var listOfApps = jQuery("#my-apps-accordion > div.panel.panel-default > div.panel-heading > h4 > div.truncate > a > strong",data)
+				.map( function(){ return this.textContent;});
+				
+			var listOfKeys = jQuery("[id^=keys] tbody tr:nth-child(1) td:nth-child(2)", data).map(function(){return this.textContent.trim()})
+			//var listOfSecrets = jQuery("[id^=keys] tbody tr:nth-child(2) td:nth-child(2)", data).map(function(){return this.textContent.trim()})
+			
+			for ( i =0 ; i < listOfApps.length; i++) { 
+				mapOfApps.set(listOfApps[i], listOfKeys[i] );
+			}
+			
+			if( mapOfApps.size > 0 ){			
+				var dropDownHTML = '<div class="btn-group">\
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 5px;">\
+					Select App <span class="caret"></span>\
+				  </button>\
+				  <ul class="dropdown-menu">'
+				
+				 dropDownHTML+= '<li><a href="#" onclick="javascript: setApiKey( \'default\'); ">Default</a></li>';				
+				 for(  i =0 ; i < listOfApps.length; i++) { 			 
+					dropDownHTML+= '<li><a href="#" onclick="javascript: setApiKey( \''+mapOfApps.get(listOfApps[i])+'\'); ">'+listOfApps[i]+'</a></li>';
+				 }				
+				
+				dropDownHTML+=	'</ul></div>';
+				
+				jQuery("input[name='apikey']").parent().append(dropDownHTML);
+			}
+		}
+	});
+	
+	var setApiKey = function(data){
+		jQuery("input[name=\'apikey\']").val(data);
+	}
+	
+	
+    if (Apigee.APIModel.hasRawBody) {
+        // Remove the body parameters section if the raw body should be
+        // displayed.
+        jQuery(".body-parameters-wrapper").remove();
+    } else {
+        // If the API Model does not have a payload, then remove the payload
+        // section.
+        payload.remove();
+    }
+    // For any content-type listing, convert comma-delimited list into a
+    // columnar list.
+    var contentTypeElements = document.getElementsByClassName('content-type-source-body');
+    for (var k = 0; k < contentTypeElements.length; k++) {
+        if(contentTypeElements[k] != null && 'innerHTML' in contentTypeElements[k]) {
+            contentTypeElements[k].innerHTML = contentTypeElements[k].innerHTML.replace(/,/g, '<br>');
+        }
+    }
+
+    function expandSchema (obj, originalObj) {
+        for (var key in obj) {
+            if (typeof obj[key] === "object") {
+                expandSchema(obj[key], (originalObj || obj));
+            }
+            else {
+                if (key === "$ref") {
+                    if (typeof obj[key] === "string" && obj[key].indexOf("#/definitions") != -1) {
+                        var objRef = obj[key].slice(14);
+                        for (var oKey in originalObj[objRef]) {
+                            if(oKey != 'required'){
+                                obj[oKey] = originalObj[objRef][oKey];
+                            }
+                        }
+                        delete obj[key];
+                        delete obj["description"];
+                    }
+                }
+            }
+        }
+    }
+
+    if (typeof marked != 'undefined') {
+        var descriptions = document.getElementsByClassName('markdown');
+        for (var i = 0; i < descriptions.length; i++) {
+            descriptions[i].innerHTML = marked(descriptions[i].innerHTML);
+        }
+    }
+
+	var exampleJSONPrint = new Apigee.APIModel.exampleJSONPrint();
+	exampleJSONPrint.initexampleJSONPrint();
+	
+    (function ($) {
+      Drupal.behaviors.exampleModule = {
+        attach: function (context, settings) {
+          // Code to be run on page load, and
+          // on ajax load added here
+          $(".panel-collapse").hide();
+          $('.panel-heading').bind('click', function() {
+            $(this).parent().find(".panel-collapse").toggle();
+            if ($(this).find("i").hasClass('glyphicon-chevron-right')) {
+              $(this).find("i").removeClass("glyphicon-chevron-right");
+              $(this).find("i").addClass("glyphicon-chevron-down");
+            } else {
+              $(this).find("i").removeClass("glyphicon-chevron-down");
+              $(this).find("i").addClass("glyphicon-chevron-right");
+            }
+          });
+		  jQuery('.panel-heading').each(function(index,element) {
+				jQuery(element).click() 
+				}
+			);
+		  
+        }
+		
+      };
+	  
+	  
+    }(jQuery));
+	
+	
+											</script>
+										</div>
+									</div>
+
+
+
+								</div>
+
+							</section> <!-- /.block -->
+						</div>
+					</section>
+
+
+				</div>
+			</div>
+		</div>
+		<div id="push"></div>
+		<footer class="footer footer-fixed-bottom">
+			<div class="region region-footer">
+				<section id="block-devconnect-default-structure-footer"
+					class="block block-devconnect-default-structure clearfix">
+
+
+					<p>&nbsp;<a href="https://twitter.com/TDAmeritrade"
+							target="_blank"><img alt="TDAmeritrade Twitter Feed" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAMAAAAqeZcjAAAAP1BMVEVnyej///9hx+fk9Ppbxuee2u9SxObS7ffe8fjs9/z1+/36/f5uzOnu+fyY2O624/OJ1O2+5vR+0eup3vHH6vbFiDmOAAAFQUlEQVRogdWbWbKlIAxAEXFWRGT/a21xlilMt151/rrLy3kmgYQkouJPBP0n2GHqmmWtKJNC6TqLdup/ix3apeKI1ITgWwip8chWUf4IWwqG8MZDBtnoeKwa/7f2xHYLQ8RIfKEDyF7Ylo4A8xSC+eoFhrGD4LUX8yTXlYeZIewgRrM5XdqmbSK2YX7aVcFrl4DtaeibXkLGJRq7xEJ3MHdp2o7tWAJ0E4zmCGwzplElmFk3kw27klSo5I42RZuxA8tBlS5t8SwjNtWsLyHz4IvteDbqxl09sSXKSN24zAtbprswzNWwWTV8clfNviq2z0+VfgVh8/nwh6vuIwWb5ZQwCG5dWPEj6nZe9XZs+SOo5DIrdnC605aaxoT8S75u9caujlUxp7OYacqebs3Y0m5YPC6HbTrXn+YWzI3Ywb53MJ/ux5roo7NeTNjF+rJfN2yi33ecdGxvNxtuPl5YxXJfwejGzg4Vf6hFGW/eUsVOjofFF9uP0ViqYl0eqhxs7u3t5pZf7OBYaVQz/Phwgasv1u7GWbGoHt5Yt97UGxyNx15H5IF178WMWMz7F7ZyBryM2OsM2LHAlsiJJdWDBaJ7Tiw6DlrksY6GfdWHFIGxh5YldgCeVLFtc0l7i/yXmDkMxuuFbYFnAypdDYeyMTxe2Bl4NKTA1sNnSXdiIRcJqus5AughpDmw4NEeVk4UwGq7cTfsBJkjDDsAcXFPXTdsW2fFgjaTOxfBHhWKhdbD044Fc6NArCuISqnLHQu6fOa3JUJi4RwlEAu9hoy5aLtIA9RAbActJ3cQKiYwEQzDgq4iE6rs2Aa8Isu0FXlk2yFYAS32C2zpkwHIYyoGu9LqkPkS+T9Mdoh88o5YLCdP7+kQ79xix+5KBh1ew6bWt2mcJ2fBwhe43NjV73BUS+CJ2ONwBFdRLvPp2D0UwNm2ik1Kz7fA1+5YsM6oYqOLF4eQI8xDp6imZDAdccuZ1JRALqVh2yTslcJBO0grBhdJpe4rYYU8E2u9jaQmhnTkHQvUEdW6VJFSATyrNRILRuZJ45ZMziMQQkLvma+rVw89KTTsljI1YtlCXvUIZR73zLMktl+rIeOaGkgmGboV1P5u2gMLJdQEaHl/rA5Jd2OhkKv7sl2ATX2WHY8CERgNArI49744dHxioUaMt3ULSHVnKfvAghmGrf1rEpfqLnMhH82gIDW7IkVdfrATdLVW21YOceyL21hXGRsM3ZjpZ1U49gpmFxbOlq/iKCj2LOA53e8WBZyp4NHLvo6SyRO5b6xHWxHjxThW8BVHi+XZhk/7yad1Syj4wg5rvZq4Dxa+Hchfkso9C9XZi3DvUYhXa7GBNtEBxnwubc7VC0fvDL1+9W6keqbdW1DldBVN2V1y1naXypVkfaL2Gwvf/Z41tsSiVoRYphHPX9DCgv1da17uvsmK/dkggjaK8MUmtO/cog58KHMXU94xnptKCye2aH/B1bMEbZTHo7AUTtX2uT64BJfRQqmjHjINY1pQ+pqBahxKS7nhaEK4KT0wjuCJfFxLUmIeOGxzDaYRao7QlvHKCWya+VFt1wnbVOeQ4ZzEo1p+ALEZDIyZ/cbmGBTumFfct0H1uTs/rJzajdU0JtR5OXUPgU/wNdkM5aYCgDd2L8MHg8k11BWPlR8VkBBV43qc4euDz+cM0+o95E8wA9Trj93AgkLfbqDdpGvrcW/wxm7SHV+q2IiB36qEfJjTNzPlpCafupfsj9SYV0tQbyz0M6Sha+aKcT6ewhldl3byU2089oT30yF9+IdPCdhk+QeWYzdw677RtwAAAABJRU5ErkJggg==" style="height: 20px; width: 20px;" /></a>&nbsp;<a
+								href="https://www.facebook.com/tdameritrade/"
+								target="_blank"><img alt="TDAmeritrade Facebook Page" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHkAAAB5CAMAAAAqJH57AAAAYFBMVEX///8pU5YmUZUJRY+suNEjT5T5+vwcTJMQR5AAP40YSpI7X5zK0eEAQ4/c4euFmLygrsri5+/U2udNa6K3wdbw8vcyWJhxiLRGZ6Bdd6p5jreWpsUAMYfBytyLncBhe6wkzMNPAAADoklEQVRoge2a2ZqjIBCFBUXc9xg73Wbe/y1HTfKNtlILptuL8Vxr/hQWh6LAcU6dOnXq1KlTb9alzKqqysrLLzLLvrh2rZB6lBRtdy368seplySvhRtoJYV8SEilA1fUefKD0ftVHoeREltSURjnlf8zXK8Lh8E1S+qw897P9guVbke7iDxVxZvZXuSi2IfcyHsjN4mp3IkdJ2/i+nmAj/NizN38LUOe1ZyAn2HX2X5wo3kBP8PWzV7wZwpNJLNk+rkPfEutuKPS2x7wR2ANFiL4OAgsRGSNvu0DDyluOeCf9t/4Jbs0awjgIe/lS9toi8mVgevSJBVoIdq2jSdtPi4121L8GjMQlX402cV3/IdTXgxP1VwjzTHL1HG1eMFAFm7OAyco+PuMMZGFy1u5YmSsVff9DSNZxRywh4S8kThGsnAZpYIfwWARrS3CTBYRPckKNORq9Q5AdgtyyOiE2pgqAFkoatAe5l56w4/91vx8SvzSfofFHN3nwV61GwwCLE91tKCrEAGLYP7h2kgYbfulcJ0XW8o1Rp6nDOo5ozTJyC7b3r8gz75bQ1nEZUzZ7iXoYPPJIqRYaI7ZiA05ogw3ujwuM4xGVjUOLuGfkOmgr1mR432Fk7C6HO8q9GCuyrZPkqSZ5YuflYOysoeHyu1RcgGOnmxN72UKDDrAvfsKzmYzOYETU19RMmydZnIDO8q6lFipBQfNTIa/EvDiS9BiB/7AHbMBzMVK2PvNZDg/hkUFm1ZIgW8mIwYkFVbyV7ZkATvJVgHFI4um7/uFkyTVKGRS7Sc/3XO2YlQP98QKKJxM2Mgt16qMtsnGvzOS22tyRSSjuY3M5zWZGDM+nxEPW5OpMaMehvj2mpzQyATfRrzIlkxYqxDntyUT1me4JrEmE2oSpA6zJRPqMErtySdTak9uvU0jk+pt5h6DRibtMZj7KhKZtq+i7CW5ZNpekrB/ZpOJ+2e8Z8AlU3sGeJ+ES6b2SfDeEHeVJPeG0H4Yc5Wk98PQHiCTzOgBYn1PHpnT98R6vSwyr9eL9JpYZGZ/G+7pc3Kb29OHzzEYMfPPMcCSX9ZFcc8H3YviD7zT55/dwOdVKgiiSQFyKG5zXnXgGZ3j3PiH7UvZnkvuPovddQy8J2p3B/jAM/cD7xkceLfiwPsk4x0a95g7NM5x94ZGHXVXyjnwfphz3J24iX3QPcBJB919fOp131NpPf6DX7rv+U9H3HE9derUqVOn/hP9BUOJOHCGSwiDAAAAAElFTkSuQmCC" style="height: 25px; width: 25px;" /></a>&nbsp;<a
+									href="https://www.tdameritrade.com/security/privacy.page" rel="nofollow">Privacy
+									Policy</a>&nbsp; | &nbsp;<a href="/terms-use" rel="nofollow">Terms of Use</a>&nbsp;
+								| &nbsp;<a ameritrade="" for=""
+									href="mailto:api@tdameritrade.com?subject=TD%20Ameritrade%20for%20developers"
+									rel="nofollow" text="">Contact Us</a></p>
+
+				</section> <!-- /.block -->
+				<section id="block-block-2" class="block block-block clearfix">
+
+
+					<script>
+						jQuery(document).ready(function() {
+    // Responsive fix to navbar dropdown not showing on mobile
+    window.onresize = function() {
+        jQuery("#navbar").css("width",document.body.clientWidth+"px")
+    }
+    
+    // Fixing the search container
+    jQuery("div.search-container").css("margin-top","10px")
+    jQuery("body").css("padding-top","70px")
+    jQuery(".modal-body").css("max-height","none")
+});
+					</script>
+				</section> <!-- /.block -->
+				<section id="block-block-6" class="block block-block clearfix">
+
+
+					<script>
+						jQuery("a[href$='/user/logout']").on("click", function() {
+sessionStorage.removeItem("apisOAuth2CredentialsDetails");
+})
+					</script>
+				</section> <!-- /.block -->
+			</div>
+		</footer>
+	</div>
+	<div class="region region-page-bottom">
+		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+			<div class="modal-dialog" style="">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="loginLabel">Log in</h4>
+					</div>
+					<div class="modal-body">
+						<form autocomplete="off" action="/user/login?destination=node/69" method="post" id="user-login"
+							accept-charset="UTF-8">
+							<div>
+								<div class="form-item form-item-name form-type-textfield form-group">
+									<label class="control-label" for="edit-name">Username or e-mail address <span class="form-required" title="This field is required.">*</span></label>
+									<input autocomplete="off" class="form-control form-text required" title="You may login with either your assigned username or your e-mail address." data-toggle="tooltip" type="text" id="edit-name" name="name" value="" size="60" maxlength="60" /></div>
+									<div class="form-item form-item-pass form-type-password form-group">
+										<label class="control-label" for="edit-pass">Password <span class="form-required" title="This field is required.">*</span></label>
+										<input autocomplete="off" class="form-control form-text required" title="The password field is case sensitive." data-toggle="tooltip" type="password" id="edit-pass" name="pass" size="60" maxlength="128" /></div>
+										<input type="hidden" name="form_build_id" value="form-cE84T3lq5SGGCduJcvAei9FQa0Zaeo017UUQDkjI_dg" />
+										<input type="hidden" name="form_id" value="user_login" />
+										<div class="form-actions form-wrapper form-group" id="edit-actions">
+											<button type="submit" id="edit-submit" name="op" value="Log in" class="btn btn-primary form-submit icon-before"><span class="icon glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</button>
+										</div><br><br><a href="/user/password">Forgot your password?</a><br><br></div>
+						</form>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="registerLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" style="">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="registerLabel">Register a new user</h4>
+					</div>
+					<div class="modal-body">
+						<form class="user-info-from-cookie" autocomplete="off" enctype="multipart/form-data"
+							action="/user/register?destination=node/69" method="post" id="user-register-form"
+							accept-charset="UTF-8">
+							<div>
+								<div class="field-type-text field-name-field-first-name field-widget-text-textfield form-wrapper form-group"
+									id="edit-field-first-name">
+									<div id="field-first-name-add-more-wrapper">
+										<div
+											class="form-item form-item-field-first-name-und-0-value form-type-textfield form-group">
+											<label class="control-label" for="edit-field-first-name-und-0-value">First Name <span class="form-required" title="This field is required.">*</span></label>
+											<input class="text-full form-control form-text required" type="text" id="edit-field-first-name-und-0-value" name="field_first_name[und][0][value]" value="" size="60" maxlength="255" /></div>
+										</div>
+									</div>
+									<div class="field-type-text field-name-field-last-name field-widget-text-textfield form-wrapper form-group"
+										id="edit-field-last-name">
+										<div id="field-last-name-add-more-wrapper">
+											<div
+												class="form-item form-item-field-last-name-und-0-value form-type-textfield form-group">
+												<label class="control-label" for="edit-field-last-name-und-0-value">Last Name <span class="form-required" title="This field is required.">*</span></label>
+												<input class="text-full form-control form-text required" type="text" id="edit-field-last-name-und-0-value" name="field_last_name[und][0][value]" value="" size="60" maxlength="255" /></div>
+											</div>
+										</div>
+										<div id="edit-account" class="form-wrapper form-group">
+											<div class="form-item form-item-name form-type-textfield form-group">
+												<label class="control-label" for="edit-name--2">Username <span class="form-required" title="This field is required.">*</span></label>
+												<input class="username form-control form-text required" title="Spaces are allowed; punctuation is not allowed except for periods, hyphens, apostrophes, and underscores." data-toggle="tooltip" type="text" id="edit-name--2" name="name" value="" size="60" maxlength="60" /></div>
+												<div class="form-item form-item-mail form-type-textfield form-group">
+													<label class="control-label" for="edit-mail">E-mail address <span class="form-required" title="This field is required.">*</span></label>
+													<input class="form-control form-text required" title="A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail." data-toggle="tooltip" type="text" id="edit-mail" name="mail" value="" size="60" maxlength="254" /></div>
+													<input type="hidden" name="timezone" value="America/Los_Angeles" />
+</div><input type="hidden" name="form_build_id" value="form-HsOdq7pZM1y8aPweLzAAV5U0xFaFrXHaOero0LajAI4" />
+													<input type="hidden" name="form_id" value="user_register_form" />
+													<fieldset class="panel panel-default form-wrapper" id="edit-legal">
+														<legend class="panel-heading">
+															<span class="panel-title fieldset-legend">Terms and Conditions of Use</span>
+														</legend>
+														<div class="panel-body">
+															<div
+																class="form-item form-item-legal-accept form-type-checkbox checkbox">
+																<label class="control-label" for="edit-legal-accept"><input type="checkbox" id="edit-legal-accept" name="legal_accept" value="1" class="form-checkbox required" /><strong>I Accept the </strong> <a href="/legal" target="_blank">API Developer License Agreement</a> <span class="form-required" title="This field is required.">*</span></label>
+															</div>
+														</div>
+													</fieldset>
+													<div class="captcha"><input type="hidden" name="captcha_sid" value="33762703" />
+														<input type="hidden" name="captcha_token" value="a69f224ea157083f624677a46545ce71" />
+														<img typeof="foaf:Image" class="img-responsive" src="/image_captcha?sid=33762703&amp;ts=1626403546" width="180" height="60" alt="Image CAPTCHA" title="Image CAPTCHA" />
+														<div
+															class="form-item form-item-captcha-response form-type-textfield form-group">
+															<label class="control-label" for="edit-captcha-response">What code is in the image? <span class="form-required" title="This field is required.">*</span></label>
+															<input class="form-control form-text required" title="Enter the characters shown in the image." data-toggle="tooltip" type="text" id="edit-captcha-response" name="captcha_response" value="" size="15" maxlength="128" /></div>
+														</div>
+														<div class="form-actions form-wrapper form-group"
+															id="edit-actions--2">
+															<button type="submit" id="edit-submit--2" name="op" value="Create new account" class="btn btn-success form-submit">Create new account</button>
+														</div>
+													</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://developer.tdameritrade.com/profiles/apigee/themes/bootstrap/js/bootstrap.js?qlkepp"></script>
+</body>
+
+</html>

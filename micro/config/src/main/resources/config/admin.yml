@@ -1,0 +1,29 @@
+server.port: 8082
+spring:
+   security:
+      user:
+         name: admin
+         password: "{cipher}2826d5c91cc0feeeabf4606b7b5af3312d1bde6197a923310b17553bdd17246c"
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://apple:Go0gl3@localhost:8761/eureka/
+   instance:
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      preferIpAddress: false
+      lease-renewal-interval-in-seconds: 60
+      statusPageUrlPath: ${management.endpoints.web.base-path}/info
+      healthCheckUrlPath: ${management.endpoints.web.base-path}/health
+management:
+   endpoints:
+      web:
+         exposure:
+            include: '*'
+         base-path: /manage
+      health:
+         show-details: always
+info:
+   app:
+      name: Admin Application
+      description: Admin application for all microservices.
+      version: 1.0

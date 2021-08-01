@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+	var urlParams = new URLSearchParams(window.location.search);
+	//console.log('access_token is '+urlParams.get('access_token'));
+	//console.log('code is '+urlParams.get('code'));
+	var type = window.location.hash.substr(1);
+	//console.log(type);
+	var params = type.split('&');
+	var access_token=params[0].split('=');
+	console.log('access_token is '+access_token[1]);
+	
+	var code=params[3].split('=');
+	console.log('code is '+code[1]);
+	
+	$("#access_token").html(access_token[1]);
+	$("#code").html(code[1]);
+
+  $("button").click(function(){
+    $.get("demo_test.asp", function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<button>FB Login redirect page</button>
+<p id='access_token'></p>
+<p id='code'></p>
+
+</body>
+</html>

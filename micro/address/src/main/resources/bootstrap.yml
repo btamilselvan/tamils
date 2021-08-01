@@ -6,8 +6,3 @@ spring:
       uri: http://localhost:8888
       username: guest
       password: can0n1947
-management:
-   endpoints:
-      web:
-         exposure:
-            include: refresh
