@@ -1,10 +1,10 @@
 package com.success.gateway;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Deprecated
 //@EnableWebSecurity
 //@Configuration
 public class SecurityConfig {

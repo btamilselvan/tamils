@@ -12,4 +12,9 @@ public class PingController {
 	public String ping() {
 		return "You have reached the gateway instance" +this.toString()+". Current Data/time is "+new Date();
 	}
+	
+	@GetMapping
+	public String pingDefault() {
+		return "You have reached the gateway instance" +this.toString()+". Current Data/time is "+new Date();
+	}
 }

@@ -3,4 +3,4 @@ spring:
     name: person-service
   cloud:
     config:
-      uri: ${config-service.url}
+      uri: http://localhost:8888

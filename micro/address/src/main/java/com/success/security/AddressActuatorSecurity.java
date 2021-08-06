@@ -1,24 +1,23 @@
 package com.success.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import com.success.filters.AddressAuthFilter;
 
 @Configuration
-public class AddressSecurity extends WebSecurityConfigurerAdapter {
-
-  @Autowired private AddressAuthFilter filter;
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class AddressActuatorSecurity extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
+    http.csrf().ignoringAntMatchers("/manage/loggers/**");
     http.authorizeRequests()
-        .anyRequest()
+        .requestMatchers(EndpointRequest.toAnyEndpoint())
         .authenticated()
         .and()
-        .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+        .httpBasic();
   }
 }

@@ -1,5 +1,34 @@
 server:
- port: 8084
+   port: ${PORT:0}
+spring:
+   security:
+      user.name: person
+      user.password: Person$3
 eureka:
- clientserviceUrl:
-  defaultZone: http://eureka-server:8061/eureka/
+   client:
+      serviceUrl:
+         defaultZone: http://apple:Go0gl3@localhost:8761/eureka/
+   instance:
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      preferIpAddress: false
+      lease-renewal-interval-in-seconds: 60
+      statusPageUrlPath: ${management.endpoints.web.base-path}/info
+      healthCheckUrlPath: ${management.endpoints.web.base-path}/health
+      metadata-map:
+         user.name: ${spring.security.user.name}
+         user.password: ${spring.security.user.password}
+message: hello world from person service
+management:
+   endpoint.restart.enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: '*'
+         base-path: /actuator
+      health:
+         show-details: always
+info:
+   app:
+      name: Person service
+      description: A simple rest project using config, eureka and actuator features.
+      version: 1.0
