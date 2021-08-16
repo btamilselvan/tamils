@@ -209,3 +209,5 @@ spring.boot.admin.client.instance.metadata.user.password=${spring.security.user.
 
 https://www.baeldung.com/spring-cloud-custom-gateway-filters
 https://ihorkosandiak.medium.com/spring-cloud-gateway-security-with-jwt-93341b342020
+https://medium.com/@bhanu.pratap/service-discovery-in-spring-cloud-using-netflix-eureka-in-aws-fargate-2c5c294fee5c
+https://pattern-match.com/blog/ecs-service-discovery-in-java/

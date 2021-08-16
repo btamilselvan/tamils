@@ -1,0 +1,11 @@
+server:
+   servlet.context-path: /
+   port: 8084
+keycloak:
+   auth-server-url: http://localhost:8080/auth
+   realm: micro
+   resource: microclient1
+   bearer-only: true
+   credentials.secret: 4b790cd5-7b42-4829-8949-9f0ff62df1b2
+logging.level.org.keycloak: TRACE
+eureka.client.enabled: false

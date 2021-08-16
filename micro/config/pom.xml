@@ -11,7 +11,6 @@
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>11</java.version>
-		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 	</properties>
 	<dependencyManagement>
@@ -54,6 +53,26 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.13</version>
+				<configuration>
+					<repository>${project.artifactId}</repository>
+					<tag>latest</tag>
+					<buildArgs>
+						<JAR_FILE>target/${project.artifactId}-${project.version}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
