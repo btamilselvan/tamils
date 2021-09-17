@@ -1,0 +1,13 @@
+server.port: 8084
+spring:
+   main:
+      web-application-type: none
+   rabbitmq:
+      host: localhost
+      username: guest
+      password: guest
+      port: 15672
+      exchange: my-topic
+      queue: my-queue
+      bidningKey: com.success
+      

@@ -2,6 +2,8 @@
  * 
  */
 var stompClient = null;
+var sessionId;
+var uid;
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -27,18 +29,48 @@ function connect() {
 		
 		var urlarray = socket._transport.url.split('/');
 		var index = urlarray.length - 2;
-		var sessionId = urlarray[index];
+		sessionId = urlarray[index];
 	
 		console.log('sessionId', sessionId);
 		
-        stompClient.subscribe('/qkonnekt/posts', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+		uid = $("#name").val();
+		
+		stompClient.subscribe('/qkonnekt/user/'+uid+'/posts', function (greeting) {
+			console.log('received....');
+			var data = JSON.parse(greeting.body);
+            showGreeting(data.post);
         });
+		
+		//register the session id with the server...
+		register(sessionId);
     });
 }
 
+function register(sessionId){
+	var uid = $("#name").val();
+	var message = {
+		"sessionId": sessionId,
+		"uid": uid
+	};
+	var registrationMessage = JSON.stringify(message);
+	stompClient.send("/qkonnekt/register", {}, registrationMessage);
+}
+
+function unregister(sessionId){
+	var uid = $("#name").val();
+	var message = {
+		"sessionId": sessionId,
+		"uid": uid
+	};
+	var registrationMessage = JSON.stringify(message);
+	stompClient.send("/qkonnekt/unregister", {}, registrationMessage);
+}
+
 function disconnect() {
-    if (stompClient !== null) {
+    if (stompClient != null) {
+		
+		unregister(sessionId);
+				
         stompClient.disconnect();
     }
     setConnected(false);
