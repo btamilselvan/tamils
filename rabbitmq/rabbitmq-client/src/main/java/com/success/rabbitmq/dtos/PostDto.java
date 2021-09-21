@@ -12,4 +12,6 @@ public class PostDto {
   private String createdOn;
   private String post;
   private String receiver;
+  private String action;
+  private Integer postId;
 }
