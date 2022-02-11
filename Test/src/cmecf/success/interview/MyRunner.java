@@ -86,6 +86,10 @@ public class MyRunner {
 	  myConsumer1.accept(myList);
 	  System.out.println(myList);
 	  
+	  Consumer<String> strConsume = input -> System.out.print(input);
+	  Consumer<String> strConsume1 = System.out::print;
+	  strConsume.accept("dsdasda");
+	  
 	  map.forEach((k, v) -> System.out.println("Key: "+k+" Value: "+v));
 	  
 	  Predicate<Integer> myPredicate = input -> input % 2==0;
@@ -101,6 +105,13 @@ public class MyRunner {
 	  
 	  Thread t = new Thread(() -> System.out.println("Thread started "+Thread.currentThread().getName()));
 	  t.start();
+	  
+	  int local = 10;
+	  
+	  IntSupplier intSupplier = () -> {
+		  return local;
+	  };
+	  
   }
   
   private Supplier<Integer> mySupplier(Integer input){
