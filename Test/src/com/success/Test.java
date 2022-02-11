@@ -26,6 +26,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +43,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -112,6 +115,15 @@ public class Test {
 	}
 
   public static void intStreamTest() {
+	  System.out.println(Instant.now().getLong(ChronoField.MILLI_OF_SECOND));
+	  System.out.println(Instant.now().getLong(ChronoField.INSTANT_SECONDS));
+	  System.out.println(Instant.now().toEpochMilli());
+	  
+	  Logger logger = Logger.getLogger("ss");
+	  logger.log(Level.INFO, "documents size: {0}", 5);
+
+	  
+//	  System.out.println(Instant.now().getLong(ChronoField.));
     long recipeCount = 500;
     long limit = 1;
     if(recipeCount <= 50) {
@@ -122,7 +134,7 @@ public class Test {
     	limit = (recipeCount / 50) + 1;
     }
     
-    IntStream.iterate(1, i -> i + 50).limit(limit).forEach(System.out::println);
+//    IntStream.iterate(1, i -> i + 50).limit(limit).forEach(System.out::println);
   }
 
   public static void dateTest() {
