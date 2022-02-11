@@ -21,14 +21,14 @@ public class NonAscii {
 		try {
 
 //			BufferedReader reader = new BufferedReader(new FileReader("c:/tamil/temp/wied.xml"));
-			BufferedReader reader = new BufferedReader(new FileReader("c:/tamil/temp/flsd_mdl/custom.html"));
+			BufferedReader reader = new BufferedReader(new FileReader("c:/tamil/temp/flsd_mdl/rib.xml"));
 			String line = null;
 			while ((line = reader.readLine()) != null) {
 				boolean match = line.chars().allMatch(c -> c < 128);
 				if (!match) {
 					System.out.println(line);
 				}
-				System.out.println(line);
+//				System.out.println(line);
 			}
 			reader.close();
 
