@@ -1,8 +1,31 @@
 spring:
-  application:
-    name: address-service
-  cloud:
-    config:
-      uri: ${config-service.url}
-      username: tamil
-      password: somepassword
+   application:
+      name: address-service
+---
+spring:
+   config.activate.on-profile: cloud
+   cloud:
+      config:
+         uri: http://localhost:8888
+         username: guest
+         password: can0n1947
+---
+spring:
+   config.activate.on-profile: local
+   cloud.config.enabled: false
+   security:
+      user.name: address
+      user.password: Addres$3
+server.port: 9090
+eureka:
+   client:
+      enabled: false
+management:
+   endpoint.restart.enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: '*'
+         base-path: /manage
+      health:
+         show-details: always

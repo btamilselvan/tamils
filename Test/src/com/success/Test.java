@@ -22,11 +22,11 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,9 +43,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -65,20 +68,120 @@ import org.joda.time.format.DateTimeFormatter;
 import org.json.simple.JSONObject;*/
 
 public class Test {
+	
+	private static void jiraExtract() {
+		try {
+			BufferedReader reader = new BufferedReader(
+					new FileReader("C:\\Tamil\\downloads\\CMSO JIRA 2020-11-05T14_16_43-0500.csv"));
+			String line = null;
+			List<String> tickets = new ArrayList<>();
+			while ((line = reader.readLine()) != null) {
+				System.out.println(line);
+				Stream.of(line.split(",")).forEach(System.out::println);
+				tickets.addAll(Stream.of(line.split(",")).filter(s -> s != null && s.length() > 0)
+						.filter(s -> !s.startsWith("T2-") && !s.startsWith("T3-")).filter(s -> s.contains("-"))
+						.map(s -> "\"".concat(s).concat("\"")).collect(Collectors.toList()));
+			}
+			System.out.println(tickets);
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void execpTest() {
+		String s1 = null;
+		String s2 = null;
+		String s3 = null;
+
+		//	String s = "Hello "+ s1.trim();
+
+		System.out.println("dsfsdf");
+
+		Set<Character> allDmTypes = new HashSet<Character>();
+		allDmTypes.add(null);
+		allDmTypes.stream().findFirst().orElse(null);
+
+		System.out.println("Done");
+
+	}
+
+	private static void dateFormatCheck() {
+		java.time.format.DateTimeFormatter df = java.time.format.DateTimeFormatter.ofPattern("MMddyyyy");
+		LocalDate local_date_1 = LocalDate.parse("11052020", df);
+		System.out.println(local_date_1);
+		//	local_date_1.
+		java.util.Date date = java.sql.Date.valueOf(local_date_1);
+	}
+
+  public static void intStreamTest() {
+	  System.out.println(Instant.now().getLong(ChronoField.MILLI_OF_SECOND));
+	  System.out.println(Instant.now().getLong(ChronoField.INSTANT_SECONDS));
+	  System.out.println(Instant.now().toEpochMilli());
+	  
+	  Logger logger = Logger.getLogger("ss");
+	  logger.log(Level.INFO, "documents size: {0}", 5);
+
+	  
+//	  System.out.println(Instant.now().getLong(ChronoField.));
+    long recipeCount = 500;
+    long limit = 1;
+    if(recipeCount <= 50) {
+    	limit = 1;
+    }else if(recipeCount % 50 == 0) {
+    	limit = recipeCount / 50;
+    }else {
+    	limit = (recipeCount / 50) + 1;
+    }
+    
+//    IntStream.iterate(1, i -> i + 50).limit(limit).forEach(System.out::println);
+  }
 
   public static void dateTest() {
-	  long epochSecond = 
-		        LocalDate.now()
-	            .toEpochSecond(LocalTime.of(10, 0, 0), ZoneOffset.of(ZoneId.SHORT_IDS.get("EST"))); 
+    //	  long epochSecond =
+    //		        LocalDate.now()
+    //	            .toEpochSecond(LocalTime.of(10, 0, 0),
+    // ZoneOffset.of(ZoneId.SHORT_IDS.get("EST")));
+    long epochSecond = 1000;
     System.out.println(epochSecond);
     System.out.println(Instant.ofEpochSecond(epochSecond));
-    System.out.println(Instant.ofEpochSecond(epochSecond).atZone(ZoneId.of(ZoneId.SHORT_IDS.get("EST"))));
+    System.out.println(
+        Instant.ofEpochSecond(epochSecond).atZone(ZoneId.of(ZoneId.SHORT_IDS.get("EST"))));
     System.out.println(Instant.now(Clock.system(ZoneId.of(ZoneId.SHORT_IDS.get("EST")))));
     System.out.println(Instant.now());
     System.out.println(LocalDate.of(2014, 1, 20).toEpochDay());
     System.out.println(LocalDate.of(2011, 6, 1).toEpochDay());
     
-    
+    System.out.println(
+            Instant.now().atZone(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.DAYS));
+
+        System.out.println(Instant.now().truncatedTo(ChronoUnit.DAYS));
+
+        ZonedDateTime now =
+            Instant.now().atZone(ZoneId.of("America/New_York")).truncatedTo(ChronoUnit.DAYS);
+
+        System.out.println(
+            Instant.now().atZone(ZoneId.of("America/New_York")).getDayOfWeek().getValue());
+
+        System.out.println(
+            Instant.now()
+                .atZone(ZoneId.of("America/New_York"))
+                .plusDays(
+                    5 - Instant.now().atZone(ZoneId.of("America/New_York")).getDayOfWeek().getValue()));
+
+        System.out.println(
+            Instant.now()
+                .atZone(ZoneId.of("America/New_York"))
+                .plusDays(
+                    5 - Instant.now().atZone(ZoneId.of("America/New_York")).getDayOfWeek().getValue())
+                .truncatedTo(ChronoUnit.DAYS)
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        System.out.println(
+            Instant.now()
+                .atZone(ZoneId.of("America/New_York"))
+                .truncatedTo(ChronoUnit.DAYS)
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd")));
   }
 
   private static void treeSetDupTest() {
@@ -1098,8 +1201,9 @@ public class Test {
   public static void main(String[] args) {
     //	chapterParticipantsTest();
     //	  genUUID();
-//    treeSetDupTest();
-	  dateTest();
+    //    treeSetDupTest();
+    //    dateTest();
+    intStreamTest();
   }
 
   /**

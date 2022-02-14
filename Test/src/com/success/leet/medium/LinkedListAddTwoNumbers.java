@@ -41,7 +41,6 @@ public class LinkedListAddTwoNumbers {
 				childNode = anotherChildNode;
 			}
 			l1 = l1 != null ? l1.next : null;
-			;
 			l2 = l2 != null ? l2.next : null;
 		}
 		if (carry > 0) {
@@ -51,21 +50,8 @@ public class LinkedListAddTwoNumbers {
 			} else {
 				ListNode anotherChildNode = new ListNode(carry);
 				childNode.next = anotherChildNode;
-				childNode = anotherChildNode;
 			}
 		}
 		return mainNode;
-	}
-}
-
-/**
- * Definition for singly-linked list.
- */
-class ListNode {
-	int val;
-	ListNode next;
-
-	public ListNode(int x) {
-		val = x;
 	}
 }

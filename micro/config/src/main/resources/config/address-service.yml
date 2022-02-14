@@ -1,9 +1,49 @@
 server:
-  port: ${PORT:0}
+   port: ${PORT:0}
+spring:
+   security:
+      user.name: address
+      user.password: Addres$3
 eureka:
-  client:
-    serviceUrl:
-     defaultZone: http://localhost:8761/eureka/
-  instance:
-   instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-   preferIpAddress: true
+   client:
+      serviceUrl:
+         defaultZone: http://apple:Go0gl3@localhost:8761/eureka/
+   instance:
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      preferIpAddress: false
+      lease-renewal-interval-in-seconds: 60
+      statusPageUrlPath: ${management.endpoints.web.base-path}/info
+      healthCheckUrlPath: ${management.endpoints.web.base-path}/health
+      metadata-map:
+         user.name: ${spring.security.user.name}
+         user.password: ${spring.security.user.password}
+         management.context-path: ${management.endpoints.web.base-path}
+message: hello world
+management:
+   endpoint.restart.enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: '*'
+         base-path: /manage
+      health:
+         show-details: always
+info:
+   app:
+      name: Address service
+      description: A simple rest project using config, eureka and actuator features.
+      version: 1.0
+encryptedProperty: '{cipher}fde09fc4c856e2e40b2636e40050c925e5e0405e1f86e4a886df119e1329689016a17eb233a6ecb4d65c434818bba285'
+# ----------------
+# ----------------
+# Orphan comments:
+# ----------------
+# Was at begin of line:38 :# ----------------
+# Was at begin of line:39 :# Orphan comments:
+# Was at begin of line:40 :# ----------------
+# Was at begin of line:41 :# Was at begin of line:33 :# ----------------
+# Was at begin of line:42 :# Was at begin of line:34 :# Orphan comments:
+# Was at begin of line:43 :# Was at begin of line:35 :# ----------------
+# Was at begin of line:44 :# Was at begin of line:36 :# Was at begin of line:32 :# Orphan comments:
+# Was at begin of line:45 :# Was at begin of line:37 :# Was at begin of line:33 :# ----------------
+# Was at begin of line:46 :# Was at begin of line:38 :# Was at begin of line:34 :# Was at begin of line:29 :#The below property is encrypted using config /encrypt end-point. The config server will automatically decrypt this value when queried

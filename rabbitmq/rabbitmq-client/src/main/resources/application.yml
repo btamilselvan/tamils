@@ -1,0 +1,24 @@
+server.port: 8082
+spring:
+   rabbitmq:
+      host: localhost
+      username: guest
+      password: guest
+      port: 5672
+      exchange: my-topic
+      #queue: my-queue
+      routingKey: com.success
+---
+spring:
+   profiles: qk
+   rabbitmq:
+      host: localhost
+      username: guest
+      password: guest
+      port: 5672
+      exchange: qk-topic
+      #queue: qk-queue
+      routingKeyChat: com.qkonnekt.chat
+      routingKeyPost: com.qkonnekt.post
+      #postQueue: qk-queue-post
+      #chatQueue: qk-queue-chat

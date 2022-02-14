@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-
+/**
+ * Find the  smallest sum of the array after performing "N" number of division operations in its elements.
+ * @author btamilselvan
+ *
+ */
 public class FindSmallestSum {
   private static int smallestSum(List<Integer> nums, int numOfOperations) {
 
@@ -18,11 +22,13 @@ public class FindSmallestSum {
                     num -> num, Collectors.mapping(num -> num, Collectors.counting()))));
 
     while (numOfOperations > 0) {
+    //easiest way to reduce the sum is to work on the large numbers first.
       Integer largestNum = numCountMap.lastKey();
       long frequency = numCountMap.get(largestNum);
       int dividedValue = (int) Math.ceil((double) largestNum / 2);
 
       if (numOfOperations >= frequency) {
+    	  //the large number count is less than the number of remaining div operations..
         numOfOperations = numOfOperations - (int) frequency;
         // remove the large number
         numCountMap.remove(largestNum);
@@ -34,6 +40,7 @@ public class FindSmallestSum {
                 ? numCountMap.get(dividedValue) + frequency
                 : frequency);
       } else {
+//    	  the large number count is greater than the number of remaining div operations.. just work only on this large number
         // reduce the frequency of the large number count by 'numOfOperations'. do division just in
         // this large number
         numCountMap.put(largestNum, frequency - numOfOperations);
