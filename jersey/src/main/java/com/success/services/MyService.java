@@ -8,11 +8,10 @@ import com.success.configs.repos.IMyRepository;
 
 public class MyService {
 
-	@Inject
-	private IMyRepository repo;
+  @Inject private IMyRepository repo;
 
-	public String hello() {
-		repo.findAll();
-		return Instant.now().toString();
-	}
+  public String hello() {
+    repo.findAll();
+    return Instant.now().toString();
+  }
 }

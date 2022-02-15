@@ -10,7 +10,7 @@ import com.success.entities.Recipe;
 
 public class MyRepository implements IMyRepository {
 
-	private EntityManager em = Persistence.createEntityManagerFactory("recipeUnit").createEntityManager();
+	private EntityManager em = Persistence.createEntityManagerFactory("recipePU").createEntityManager();
 
 	@Override
 	public List<Recipe> findAll() {

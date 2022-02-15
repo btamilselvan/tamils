@@ -7,15 +7,16 @@ import com.success.configs.repos.IMyRepository;
 import com.success.configs.repos.MyRepository;
 import com.success.services.MyService;
 
-public class MyConfig extends ResourceConfig{
-	
-	public MyConfig() {
-		register(new AbstractBinder() {
-			@Override
-			protected void configure() {
-				bind(MyService.class).to(MyService.class);
-				bind(MyRepository.class).to(IMyRepository.class);
-			}
-		});
-	}
+public class MyConfig extends ResourceConfig {
+
+  public MyConfig() {
+    register(
+        new AbstractBinder() {
+          @Override
+          protected void configure() {
+            bind(MyService.class).to(MyService.class);
+            bind(MyRepository.class).to(IMyRepository.class);
+          }
+        });
+  }
 }
