@@ -1,5 +1,6 @@
-package com.success;
+package com.success.controllers;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -7,12 +8,16 @@ import javax.ws.rs.core.MediaType;
 
 import com.success.exceptions.MyException;
 import com.success.models.Car;
+import com.success.services.MyService;
 
 /**
  * Root resource (exposed at "myresource" path)
  */
 @Path("c")
 public class MyResource {
+	
+	@Inject
+	private MyService service;
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -23,7 +28,7 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
-        return "Got it!";
+        return service.hello();
     }
     
     @GET

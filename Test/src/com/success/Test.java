@@ -39,10 +39,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -68,6 +70,16 @@ import org.joda.time.format.DateTimeFormatter;
 import org.json.simple.JSONObject;*/
 
 public class Test {
+	
+	
+	private static void optioanlOfNullableTest() {
+		Set<Character> list = new HashSet<>(Arrays.asList('a', null, 'b', 'c'));
+//		System.out.println(list.stream().findFirst().map(Optional::ofNullable).orElse(null));
+		
+		list.stream().map(Optional::ofNullable).findFirst().flatMap(Function.identity()).orElse(null);
+		
+//		System.out.println(list.stream().findFirst().orElse(null));
+	}
 	
 	private static void jiraExtract() {
 		try {
@@ -1203,7 +1215,8 @@ public class Test {
     //	  genUUID();
     //    treeSetDupTest();
     //    dateTest();
-    intStreamTest();
+//    intStreamTest();
+	  optioanlOfNullableTest();
   }
 
   /**
