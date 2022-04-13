@@ -6,9 +6,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.sql.DataSource;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -26,6 +32,22 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.PutItemResponse;
 
+/**
+ * lambda Test event:
+ * 
+	{
+		"body": "{\"name\": \"Testing\", \"address\": \"VA\"}",
+	  	"pathParameters": {
+	    	"id": "11111"
+	  	},
+	  	"queryStringParameters": {
+	    	"name": "Tamil"
+	  	}
+	}
+ * 
+ * @author Tamil
+ *
+ */
 public class LambdaFunctionHandler implements RequestStreamHandler {
 
 	private static DynamoDbClient dynamoDb;
@@ -73,23 +95,37 @@ public class LambdaFunctionHandler implements RequestStreamHandler {
 		context.getLogger().log("Inside put request...");
 		JSONObject response = new JSONObject();
 		JSONParser parser = new JSONParser();
+		JSONObject responseBody = new JSONObject();
 		try {
 			JSONObject request  = (JSONObject) parser.parse(new BufferedReader(new InputStreamReader(inputStream)));
 			if(request.get("body")!=null){
 				String requestBody = request.get("body").toString();
 				context.getLogger().log("request body is "+requestBody);
 				
-				PutItemResponse result = putItem(requestBody);
+//				PutItemResponse result = putItem(requestBody);
 				
 //				response.put("attribute values", result.getAttributes().values().toString());
-				JSONObject responseBody = new JSONObject();
 				responseBody.put("message", "successfully added an item to the table.. ");
 				responseBody.put("Current Datetime is ", new Date());
-				
-				response.put("statusCode", "200");
-				response.put("isBase64Encoded", false);				
-				response.put("body", responseBody.toJSONString());
 			}
+			if(request.get("pathParameters")!=null) {
+				JSONObject pp = (JSONObject) request.get("pathParameters");
+				if(pp.get("id")!=null) {
+					context.getLogger().log("path parameter "+pp.get("id"));
+					responseBody.put("pathParam", pp.get("id"));
+				}
+			}
+			if(request.get("queryStringParameters")!=null) {
+				JSONObject pp = (JSONObject) request.get("queryStringParameters");
+				if(pp.get("name")!=null) {
+					context.getLogger().log("query parameter "+pp.get("name"));
+					responseBody.put("queryParam", pp.get("name"));
+				}
+			}
+			response.put("body", responseBody.toJSONString());
+			response.put("statusCode", "200");
+			response.put("isBase64Encoded", false);
+			rdsConnectTest(context);
 		} catch (ParseException e) {
 			context.getLogger().log("unable to parse... ");
 			response.put("statusCode", "400");
@@ -122,4 +158,23 @@ public class LambdaFunctionHandler implements RequestStreamHandler {
 		dynamoDb = DynamoDbClient.builder().build();
 //		dynamoDb = AmazonDynamoDBClientBuilder.standard().withRegion(REGION).build();
 	}
+
+  private void rdsConnectTest(Context context) {
+    try {
+    	Class.forName("com.mysql.cj.jdbc.Driver");
+    	String username = System.getenv("username");
+    	String password = System.getenv("password");
+    	String url = System.getenv("url");
+      Connection connection = DriverManager.getConnection(url, username, password);
+      PreparedStatement ps = connection.prepareStatement("select count(*) from recipe");
+      ResultSet rs = ps.executeQuery();
+      if(rs.next()) {
+    	  context.getLogger().log("count "+rs.getInt(1));
+      }
+      ps.close();
+      connection.close();
+    } catch (Exception e) {
+    	e.printStackTrace();
+    }
+  }
 }
