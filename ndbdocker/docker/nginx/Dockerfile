@@ -20,7 +20,7 @@ WORKDIR /app/lumin
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-#COPY nginx-fe.conf /etc/nginx/conf.d/nginx-fe.conf
+COPY nginx-fe.conf /etc/nginx/conf.d/nginx-fe.conf
 
 #COPY nginx-storybook.conf /etc/nginx/conf.d/nginx-storybook.conf
 
@@ -28,7 +28,10 @@ RUN chown -R 1001:0 /etc/nginx
 
 # Place the application from build stage
 
-#COPY /tmp/app/dist /app/lumin/web
+#COPY app/dist /deployments/app/
+
+COPY app/dist /deployments/app
+COPY app/storybook /deployments/app/storybook
 
 #COPY --from-build/tmp/app/storybook /app/lumin/storybook
 

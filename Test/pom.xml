@@ -97,7 +97,12 @@
 			<artifactId>forms</artifactId>
 			<version>${itext.version}</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>8.35.0</version>
+		</dependency>
 
 	</dependencies>
 	<build>
