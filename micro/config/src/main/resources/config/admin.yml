@@ -1,5 +1,12 @@
 server.port: 8082
 spring:
+   application:
+      name: admin
+   boot:
+      admin:
+         public-url: http://localhost:8086/admin
+         discovery:
+            ignored-services: ${spring.application.name} 
    security:
       user:
          name: admin

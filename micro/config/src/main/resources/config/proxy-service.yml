@@ -1,9 +1,11 @@
 server:
  port: 8086
 eureka:
+ instance:
+  hostname: localhost
  client:
   serviceUrl:
-   defaultZone: http://localhost:8761/eureka/
+   defaultZone: http://apple:Go0gl3@localhost:8761/eureka/
   fetchRegistry: true
   preferIpAddress: true
 zuul:
@@ -15,3 +17,6 @@ zuul:
     person:
       path: /person/**
       serviceId: person-service
+    admin:
+      path: /admin/**
+      serviceId: admin
