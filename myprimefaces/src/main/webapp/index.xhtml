@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<f:view>
+	<h:head>
+		<title>Primefaces Demo</title>
+	</h:head>
+	<h:body style="background-color:#f4f4f4">
+		<h:outputText value="Hello"></h:outputText>
+		<br />
+		<br />
+		<br />
+		<p:inputText id="text1">
+			<p:keyFilter regEx="/^[\x00-\x7F]*$/"/>
+		</p:inputText>
+		
+		<p:inputText id="text2">
+			
+		</p:inputText>
+	</h:body>
+</f:view>
+</html>
