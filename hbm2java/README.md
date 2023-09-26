@@ -1,6 +1,6 @@
 #### Notes and References
 
-- The hibernate-tools-maven plugin has three goals and we are using `hbm2java` to generate entities from database.
+- The `hibernate-tools-maven` plugin has three goals and we are using `hbm2java` to generate entities from database.
 - Populate database connection information in `hibernate.properties`.
 - Use `hibernate.revenge.xml` for type mapping.
 - Update entity package name in pom.xml.
